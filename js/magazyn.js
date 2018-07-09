@@ -1,7 +1,6 @@
 document.addEventListener("DOMContentLoaded", function() {
     const tabela =document.querySelector('#tabela');
     const btn = tabela.querySelectorAll('.product');
-
     for (var i=0;i<btn.length;i++){
         btn[i].addEventListener('click', function () {
             if (parseInt(this.dataset.show,10)===0){
@@ -14,4 +13,5 @@ document.addEventListener("DOMContentLoaded", function() {
             }
         });
     }
+
 });

@@ -33,9 +33,9 @@
 
         if ((count($wynik['wyniki']) / $_SESSION['howMuch']) < 1) {
             for ($i = (count($wynik['wyniki']) + 1); ($i / $_SESSION['howMuch']) <= 1; $i++) {
-                echo "<tr class='Product'>";
+                echo "<tr class='ProductEmpty'>";
                 for ($a = 1; $a <= 3; $a++) {
-                    echo "<td> </td>";
+                    echo "<td class='kolumna'> </td>";
                 }
                 echo "</tr>";
             }
