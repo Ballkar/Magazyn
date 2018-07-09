@@ -1,0 +1,72 @@
+<?php
+require "basic/TopHTML.php";
+require "basic/nav.php";
+
+?>
+
+    <div id="TOP">
+
+
+        <div id="textbox">
+            <h1>Magazyn</h1>
+        </div>
+        <div id="TopContent">
+            <table>
+                <tr>
+                    <td>
+                        <form action="/magazyn-master/magazyn" method="post">
+                            <input type="text" name="wyszukaj" placeholder="<?php
+                            if (isset($_SESSION['query'])) {
+                                echo $_SESSION['query'];
+                            } else {
+                                echo "Wpisz Czego szukasz?";
+                            }
+                            ?>">
+                            <input type="submit" value="Wyszukaj">
+                        </form>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <form method="POST" action="/magazyn-master/magazyn">
+                            Ile rekodrów na jednej stronie:
+                            <select name='howMuch'>
+                                <option value="2"<?php if ($_SESSION['howMuch'] == 2) {
+                                    echo "selected";
+                                } ?>>2
+                                </option>
+                                <option value="3"<?php if ($_SESSION['howMuch'] == 3) {
+                                    echo "selected";
+                                } ?>>3
+                                </option>
+                                <option value="5"<?php if ($_SESSION['howMuch'] == 5) {
+                                    echo "selected";
+                                } ?>>5
+                                </option>
+                                <option value="10"<?php if ($_SESSION['howMuch'] == 10) {
+                                    echo "selected";
+                                } ?>>10
+                                </option>
+                            </select>
+                            <input type="submit" value="potwierdź">
+                        </form>
+                    </td>
+                </tr>
+
+
+            </table>
+        </div>
+
+        <?php
+        require "basic/userMenu.php";
+        ?>
+
+    </div>
+
+<?php
+require "basic/zawartoscMagazynu.php";
+?>
+
+<?php
+require "basic/BotHTML.php";
+?>

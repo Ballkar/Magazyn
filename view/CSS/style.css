@@ -1,0 +1,333 @@
+body
+{
+    padding: 0px;
+    margin: 0px;
+}
+#nav
+{
+    text-align: center;
+    background-color: #ddd;
+    display: block;
+    overflow: hidden;
+    user-select: none;
+}
+#nav a:link
+{
+    color:#000;
+    text-decoration: none;
+    font-size: 32px;
+    padding: 15px;
+    line-height: 50px;
+}
+#nav a:visited
+{
+    color:#000;
+}
+#nav a:active
+{
+    color:#ff3333;
+}
+#nav a:hover
+{
+    color:#ff3333;;
+}
+#registerbutton{
+    padding: 2px;
+}
+#log
+{
+    text-align: center;
+    display: inline-block;
+    width: 15%;
+    height: 135px;
+    padding: 15px;
+    padding-top: 10px;
+    float: left;
+    overflow: hidden;
+    user-select: none;
+
+}
+#log form
+{
+    margin-bottom: 0px;
+}
+#log input
+{
+    margin-top: 4px;
+}
+#log h2
+{
+    margin-top: 7px;
+    margin-bottom: 11px;
+}
+#log a:link
+{
+    color:#000;
+    text-decoration: none;
+}
+#log a:visited
+{
+    color:#000;
+}
+#log a:active
+{
+    color:#ff3333;
+}
+#log a:hover
+{
+    color:#ff3333;;
+}
+#register
+{
+    width: 60%;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 23px;
+    padding: 15px;
+    text-align: center;
+}
+
+#register label
+{
+    user-select: none;
+    font-size: 20px;
+
+}
+
+#register input
+{
+    display: block;
+    width: 300px;
+    margin: 5px auto 20px auto;
+
+}
+#register a
+{
+    text-decoration: none;
+    color: #aaa;
+}
+#register a:hover
+{
+    text-decoration: none;
+    color: red;
+}
+#register #regulamin
+{
+    width: 15px;
+
+}
+
+#textbox
+{
+    width: 15%;
+    height: 135px;
+    padding: 15px;
+    float: left;
+    display: inline-block;
+
+}
+
+#TOP
+{
+
+    height: 164px;
+    border: 1px solid #ddd;
+    border-top: 0px;
+}
+#TopContent
+{
+    display: inline-block;
+    width: 60%;
+    height: 135px;
+    padding: 15px;
+    border-right: 1px solid #ddd;
+    border-left: 1px solid #ddd;
+    float: left;
+}
+#magazynContent
+{
+    padding: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    width: 55%;
+    text-align: justify;
+}
+
+#magazynContent form
+{
+    margin: 5px;
+    overflow: hidden;
+}
+#magazynContent form label
+{
+
+    font-size: 22px;
+}
+#magazynContent form input
+{
+    margin-top: 10px;
+    display: block;
+    width: 300px;
+}
+.product{
+
+}
+#tabela
+{
+    border: 1px solid #ddd;
+    border-collapse: collapse;
+    cursor: pointer;
+    text-align: center;
+    text-transform: capitalize;
+
+}
+#tabela thead
+{
+    font-size: 20px;
+    font-weight: bold;
+    background-color: #eee;
+}
+
+#tabela tr
+{
+    height: 35px;
+}
+.product:hover
+{
+    background-color: #eee;
+}
+.kolumna
+{
+    width: 250px;
+    border: 1px solid #ddd;
+}
+.deleteButton
+{
+    background-color:#e4685d;
+    -moz-border-radius:4px;
+    -webkit-border-radius:4px;
+    border-radius:4px;
+    border:1px solid #ffffff;
+    display:inline-block;
+    cursor:pointer;
+    color:#ffffff;
+}
+
+
+.error
+{
+    color: red;
+}
+.error_register
+{
+    color: red;
+    font-size: 13px;
+    display: block;
+    user-select: none;
+}
+.info_register
+{
+    font-size: 13px;
+    display: block;
+    user-select: none;
+}
+
+.info
+{
+    color: #6666ff;
+    display: block;
+}
+.nawigacja
+{
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+    text-align: center;
+    width: 450px;
+}
+.strona
+{
+    float: left;
+    width: 50px;
+    height: 35px;
+    line-height: 30px;
+    text-decoration: none;
+    color: #000;
+    user-select: none;
+}
+.strona1
+{
+    float: left;
+    width: 100px;
+    height: 35px;
+    line-height: 30px;
+    text-decoration: none;
+    color: #000;
+    cursor: pointer;
+    user-select: none;
+}
+.strona11
+{
+    float: left;
+    width: 100px;
+    height: 35px;
+    cursor: default;
+    user-select: none;
+}
+.strona:link
+{
+    color:#000;
+    text-decoration: none;
+}
+.strona1:link
+{
+    color:#000;
+    text-decoration: none;
+}
+.strona:visited
+{
+    color:#000;
+}
+.strona1:visited
+{
+    color:#000;
+}
+.strona:active
+{
+    color:#ff3333;
+}
+.strona1:active
+{
+    color:#ff3333;
+}
+.strona:hover
+{
+    color:#ff3333;;
+}
+.strona1:hover
+{
+    color:#ff3333;;
+}
+.d-none{
+    display: none;
+}
+.d-block{
+    display: block;
+}
+.d-inlineblock{
+    display: inline-block;
+}
+.f-left{
+    float: left!important;
+}
+.f-right{
+    float: right!important;
+}
+.w-50
+{
+    width: 50%!important;
+}
+.wpx100{
+    width: 100px!important;
+}
