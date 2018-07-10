@@ -4,8 +4,6 @@
         echo '<nav>';
         echo '<a href="/magazyn-master">Strona Główna</a>';
         echo '<a href="/magazyn-master/magazyn">Magazyn</a>';
-        echo '<a href="/magazyn-master/orders">Zamówienia</a>';
-        echo '<a href="/magazyn-master/edit">Edycja Konta</a>';
 
         if (isset($_SESSION['admin'])&&$_SESSION['admin']==true)
             {

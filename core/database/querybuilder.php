@@ -68,6 +68,11 @@ class querybuilder
         $statement->execute();
     }
 
+    public function deleteProduct($table, $id){
+        $statement = $this->pdo->prepare( "DELETE FROM $table WHERE `id_przedmiotu` = $id");
+        $statement->execute();
+    }
+
     public function addNewAccount($table, $login, $password,$email){
         $statement = $this->pdo->prepare("INSERT INTO $table (`id`,`login`,`password`,`email`, `administracja`) VALUES ('',:login,:password,:email, '0')");
         $statement->bindValue(":login",$login,PDO::PARAM_STR);

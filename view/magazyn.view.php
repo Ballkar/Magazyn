@@ -1,7 +1,6 @@
 <?php
 require "basic/TopHTML.php";
 require "basic/nav.php";
-
 ?>
 
     <div id="TOP">

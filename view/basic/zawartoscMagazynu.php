@@ -3,6 +3,7 @@
     <table id="tabela">
         <thead id="naglowek_tabeli">
         <tr>
+            <td>Identyfikator</td>
             <td>Nazwa przedmiotu</td>
             <td>Cena</td>
             <td>Dostępna ilość</td>
@@ -18,19 +19,9 @@
                 echo "<td class='kolumna'>" . $inner . "</td>";
             }
             echo "</tr>";
-
-            //dla każdego rekordu dodać opcje do zmieniania wartości
-            echo "<tr class='d-none'>
-                    <td colspan=3>
-                        <button class='deleteButton f-right'>usuń z Magazynu</button>
-                        <form >
-                            <input type='number' class='f-left'>
-                            <input type='submit' value='Zmień ilość' class='f-left wpx100'>
-                        </form>
-                    </td>
-                </tr>";
         }
 
+        //puste kolumny(wygląd tabeli)
         if ((count($wynik['wyniki']) / $_SESSION['howMuch']) < 1) {
             for ($i = (count($wynik['wyniki']) + 1); ($i / $_SESSION['howMuch']) <= 1; $i++) {
                 echo "<tr class='ProductEmpty'>";
