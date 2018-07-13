@@ -29,7 +29,7 @@ class validator
         }
     }
 
-    public static function check_przedm_name($name){
+    public static function check_product_name($name){
         if (strlen($name)>30||strlen($name)<=0) {
             $_SESSION['err_nazwa']="Nazwa przedmiotu powinna mieć od 1 do 29 znaków";
             return false;
@@ -38,7 +38,7 @@ class validator
             return $name;
         }
     }
-    public static function check_przedm_price($price){
+    public static function check_product_price($price){
         if ($price<=0) {
             $_SESSION['err_cena']="Podana cena musi być liczbą większą od 0";
             return false;
@@ -52,7 +52,7 @@ class validator
             return false;
         }
     }
-    public static function check_przedm_number($number){
+    public static function check_product_number($number){
         if ($number<=0) {
             $_SESSION['err_ilosc']="Ilość musi być liczbą całkowitą większą od 0";
             return false;

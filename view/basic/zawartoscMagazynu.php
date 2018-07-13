@@ -25,7 +25,7 @@
 
         //puste kolumny(wygląd tabeli)
         if ((count($products) / $_SESSION['howMuch']) < 1) {
-            for ($i = (count($products) + 1); ($i / $_SESSION['howMuch']) <= 1; $i++) {
+            for ($i = (count($products)); ($i / $_SESSION['howMuch']) < 1; $i++) {
                 echo "<tr class='ProductEmpty'>";
                 for ($a = 1; $a <= 4; $a++) {
                     echo "<td class='kolumna'> </td>";

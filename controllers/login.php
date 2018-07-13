@@ -1,5 +1,5 @@
 <?php
-$query->log('user', $_POST["login"],$_POST["password"]);
+App::get('database')->log('user', $_POST["login"],$_POST["password"]);
 
 
 

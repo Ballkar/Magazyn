@@ -42,9 +42,9 @@ class querybuilder
 
         return $statement1;
     }
-    public function selectProducts($table, $what,$ile_pominac ,$howMuch)
+    public function selectProducts($table, $skip ,$stop)
     {
-        $statement = $this->pdo->prepare("SELECT $what FROM $table WHERE id_przedmiotu>0  LIMIT $ile_pominac,$howMuch");
+        $statement = $this->pdo->prepare("SELECT * FROM $table WHERE id_przedmiotu>0  LIMIT $skip,$stop");
         $statement->execute();
         return $statement->fetchAll(PDO::FETCH_CLASS,product::class);
     }
@@ -57,13 +57,12 @@ class querybuilder
     }
 
 
-
-    public function addProduct($table, $what){
+    public function addProduct($table, $data){
         $statement = $this->pdo->prepare("INSERT INTO $table(`id_przedmiotu`, `nazwa_przedmiotu`, `cena`, `ilosc`, `dzial`) VALUES ('',:nazwa,:cena,:ilosc,:dzial)");
-        $statement->bindValue(":nazwa",$what['name'],PDO::PARAM_STR);
-        $statement->bindValue(":cena",$what['cena'],PDO::PARAM_INT);
-        $statement->bindValue(":ilosc",$what['ilosc'],PDO::PARAM_INT);
-        $statement->bindValue(":dzial",$what['dzial'],PDO::PARAM_INT);
+        $statement->bindValue(":nazwa",$data['name'],PDO::PARAM_STR);
+        $statement->bindValue(":cena",$data['cena'],PDO::PARAM_INT);
+        $statement->bindValue(":ilosc",$data['ilosc'],PDO::PARAM_INT);
+        $statement->bindValue(":dzial",$data['dzial'],PDO::PARAM_INT);
         $statement->execute();
     }
 

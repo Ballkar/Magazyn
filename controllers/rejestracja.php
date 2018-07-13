@@ -32,7 +32,7 @@ if (isset($_POST['login'])){
             unset($_SESSION['reg_login']);
             unset($_SESSION['reg_email']);
             unset($_SESSION['reg_regulamin']);
-            $query->addNewAccount('user',$login,$password,$email);
+            App::get('database')->addNewAccount('user',$login,$password,$email);
             $_SESSION['reg_success']="Pomyślnie dodano nowego użytkownika!!!";
         }
     }
