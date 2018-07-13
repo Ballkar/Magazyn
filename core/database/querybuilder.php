@@ -50,7 +50,8 @@ class querybuilder
     {
         $statement = $this->pdo->prepare("SELECT * FROM $table WHERE `id_przedmiotu`=$id");
         $statement->execute();
-        return $statement->fetchAll(PDO::FETCH_ASSOC);;
+        $product = $statement->fetchAll(PDO::FETCH_CLASS, product::class);
+        return $product[0];
     }
 
 

@@ -14,6 +14,7 @@ class ComposerStaticInit6594ad3f1598662b9e021df7c64f5309
         'connector' => __DIR__ . '/../..' . '/core/database/connect.php',
         'message' => __DIR__ . '/../..' . '/core/message.php',
         'navigator' => __DIR__ . '/../..' . '/core/navigator.php',
+        'product' => __DIR__ . '/../..' . '/core/product.php',
         'przedmiot' => __DIR__ . '/../..' . '/core/database/przedmiot.php',
         'querybuilder' => __DIR__ . '/../..' . '/core/database/querybuilder.php',
         'router' => __DIR__ . '/../..' . '/core/router.php',

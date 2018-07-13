@@ -13,6 +13,7 @@ return array(
     'connector' => $baseDir . '/core/database/connect.php',
     'message' => $baseDir . '/core/message.php',
     'navigator' => $baseDir . '/core/navigator.php',
+    'product' => $baseDir . '/core/product.php',
     'przedmiot' => $baseDir . '/core/database/przedmiot.php',
     'querybuilder' => $baseDir . '/core/database/querybuilder.php',
     'router' => $baseDir . '/core/router.php',
