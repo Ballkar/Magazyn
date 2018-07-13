@@ -46,19 +46,15 @@ class querybuilder
             "ile_wynikow" =>$statement1
             ];
     }
-    public function findProduct($table, $what,$ile_pominac ,$howMuch,$query)
+    public function returnProductFromId($table, $id)
     {
-        $sql = "SELECT COUNT(id_przedmiotu) as ilosc FROM $table WHERE `nazwa_przedmiotu` LIKE '%{$query}%'";
-        $statement1 = $this->pdo->query($sql)->fetch()['ilosc'];
-
-        $sql1= "SELECT $what FROM $table WHERE `nazwa_przedmiotu` LIKE '%{$query}%' LIMIT $ile_pominac,$howMuch";
-        $statement = $this->pdo->prepare($sql1);
+        $statement = $this->pdo->prepare("SELECT * FROM $table WHERE `id_przedmiotu`=$id");
         $statement->execute();
-        return [
-            'wyniki' =>$statement->fetchAll(PDO::FETCH_ASSOC),
-            "ile_wynikow" =>$statement1
-        ];
+        return $statement->fetchAll(PDO::FETCH_ASSOC);;
     }
+
+
+
     public function addProduct($table, $what){
         $statement = $this->pdo->prepare("INSERT INTO $table(`id_przedmiotu`, `nazwa_przedmiotu`, `cena`, `ilosc`, `dzial`) VALUES ('',:nazwa,:cena,:ilosc,:dzial)");
         $statement->bindValue(":nazwa",$what['name'],PDO::PARAM_STR);

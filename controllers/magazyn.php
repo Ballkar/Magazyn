@@ -16,7 +16,9 @@ if (!isset($_GET['strona'])) {
 $ile_rekord_pominac=($_GET['strona']-1)*$_SESSION['howMuch'];
 
 $wynik = $query->selectProduct("magazyn","id_przedmiotu,nazwa_przedmiotu,cena,ilosc", $ile_rekord_pominac, $_SESSION['howMuch']);
+
 $ile_stron_max = ceil($wynik['ile_wynikow']/$_SESSION['howMuch']);
+
 require "view/magazyn.view.php";
 
 echo "<script src='js/magazyn.js'></script>";
