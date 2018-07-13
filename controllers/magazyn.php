@@ -14,10 +14,12 @@ if (!isset($_GET['strona'])) {
     $_GET['strona']=1;
 }
 $ile_rekord_pominac=($_GET['strona']-1)*$_SESSION['howMuch'];
+$ile_przedmiotow= $query->countProduct('magazyn');
 
-$wynik = $query->selectProduct("magazyn","id_przedmiotu,nazwa_przedmiotu,cena,ilosc", $ile_rekord_pominac, $_SESSION['howMuch']);
+$products = $query->selectProducts("magazyn","id_przedmiotu,nazwa_przedmiotu,cena,ilosc", $ile_rekord_pominac, $_SESSION['howMuch']);
 
-$ile_stron_max = ceil($wynik['ile_wynikow']/$_SESSION['howMuch']);
+$ile_stron_max = ceil($ile_przedmiotow/$_SESSION['howMuch']);
+
 
 require "view/magazyn.view.php";
 

@@ -12,20 +12,22 @@
 
         <?php
         //dla każdego rekordu
-        foreach ($wynik['wyniki'] as $key) {
+        foreach ($products as $key) {
             echo "<tr class='product' data-show=0>";
-            //dla każdej informacji w rekordzie
-            foreach ($key as $inner) {
-                echo "<td class='kolumna'>" . $inner . "</td>";
-            }
+
+                echo "<td class='kolumna'>".$key->id_przedmiotu."</td>";
+                echo "<td class='kolumna'>".$key->nazwa_przedmiotu."</td>";
+                echo "<td class='kolumna'>".$key->cena."</td>";
+                echo "<td class='kolumna'>".$key->ilosc."</td>";
+
             echo "</tr>";
         }
 
         //puste kolumny(wygląd tabeli)
-        if ((count($wynik['wyniki']) / $_SESSION['howMuch']) < 1) {
-            for ($i = (count($wynik['wyniki']) + 1); ($i / $_SESSION['howMuch']) <= 1; $i++) {
+        if ((count($products) / $_SESSION['howMuch']) < 1) {
+            for ($i = (count($products) + 1); ($i / $_SESSION['howMuch']) <= 1; $i++) {
                 echo "<tr class='ProductEmpty'>";
-                for ($a = 1; $a <= 3; $a++) {
+                for ($a = 1; $a <= 4; $a++) {
                     echo "<td class='kolumna'> </td>";
                 }
                 echo "</tr>";

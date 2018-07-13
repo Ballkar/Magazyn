@@ -35,16 +35,18 @@ class querybuilder
         }
     }
 
-    public function selectProduct($table, $what,$ile_pominac ,$howMuch)
+
+    public function countProduct($table)
     {
         $statement1 = $this->pdo->query("SELECT COUNT(id_przedmiotu)as ilosc FROM $table WHERE id_przedmiotu>0")->fetch()['ilosc'];
 
+        return $statement1;
+    }
+    public function selectProducts($table, $what,$ile_pominac ,$howMuch)
+    {
         $statement = $this->pdo->prepare("SELECT $what FROM $table WHERE id_przedmiotu>0  LIMIT $ile_pominac,$howMuch");
         $statement->execute();
-        return [
-            'wyniki' =>$statement->fetchAll(PDO::FETCH_ASSOC),
-            "ile_wynikow" =>$statement1
-            ];
+        return $statement->fetchAll(PDO::FETCH_CLASS,product::class);
     }
     public function returnProductFromId($table, $id)
     {
