@@ -10,6 +10,7 @@ return array(
     'ComposerAutoloaderInit6594ad3f1598662b9e021df7c64f5309' => $vendorDir . '/composer/autoload_real.php',
     'Composer\\Autoload\\ClassLoader' => $vendorDir . '/composer/ClassLoader.php',
     'Composer\\Autoload\\ComposerStaticInit6594ad3f1598662b9e021df7c64f5309' => $vendorDir . '/composer/autoload_static.php',
+    'PageController' => $baseDir . '/controllers/PageController.php',
     'URI' => $baseDir . '/core/URI.php',
     'connector' => $baseDir . '/core/database/connect.php',
     'message' => $baseDir . '/core/message.php',
@@ -17,5 +18,6 @@ return array(
     'product' => $baseDir . '/core/product.php',
     'querybuilder' => $baseDir . '/core/database/querybuilder.php',
     'router' => $baseDir . '/core/router.php',
+    'sessionController' => $baseDir . '/controllers/sessionController.php',
     'validator' => $baseDir . '/core/validator.php',
 );

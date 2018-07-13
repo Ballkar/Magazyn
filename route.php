@@ -1,18 +1,16 @@
 <?php
 
-$router->get("magazyn-master","controllers/index.php");
+$router->get("magazyn-master","PageController@home");
 
-$router->get("magazyn-master/credit","controllers/credit.php");
+$router->get("magazyn-master/magazyn","PageController@storage");
+$router->post("magazyn-master/magazyn","PageController@storage");
 
-$router->get("magazyn-master/magazyn","controllers/magazyn.php");
-$router->post("magazyn-master/magazyn","controllers/magazyn.php");
+$router->get("magazyn-master/przedmiot","PageController@product");
 
-$router->get("magazyn-master/przedmiot","controllers/przedmiot.php");
+$router->get("magazyn-master/admin-magazyn","PageController@storageAdmin");
+$router->post("magazyn-master/admin-magazyn","PageController@storageAdmin");
 
-$router->get("magazyn-master/admin-magazyn","controllers/magazyn-admin.php");
-$router->post("magazyn-master/admin-magazyn","controllers/magazyn-admin.php");
-
-$router->post("magazyn-master/login","controllers/login.php");
-$router->post("magazyn-master/logout","controllers/logout.php");
-$router->get("magazyn-master/rejestracja","controllers/rejestracja.php");
-$router->post("magazyn-master/rejestracja","controllers/rejestracja.php");
+$router->post("magazyn-master/login","sessionController@login");
+$router->post("magazyn-master/logout","sessionController@logout");
+$router->get("magazyn-master/rejestracja","sessionController@register");
+$router->post("magazyn-master/rejestracja","sessionController@register");

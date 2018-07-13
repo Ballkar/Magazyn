@@ -14,11 +14,16 @@ class App
     {
         static::$registry[$key] = $value;
     }
+
     public static function get($key)
     {
-        if (! array_key_exists($key, static::$registry)) {
+        if (!array_key_exists($key, static::$registry)) {
             throw new Exception("{$key} Nie istnieje w bazie zależości");
         }
-        return static::$registry[$key];
+        try {
+            return static::$registry[$key];
+        } catch (Exception $e) {
+            die($e->getMessage());
+        }
     }
 }

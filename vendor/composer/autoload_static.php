@@ -11,6 +11,7 @@ class ComposerStaticInit6594ad3f1598662b9e021df7c64f5309
         'ComposerAutoloaderInit6594ad3f1598662b9e021df7c64f5309' => __DIR__ . '/..' . '/composer/autoload_real.php',
         'Composer\\Autoload\\ClassLoader' => __DIR__ . '/..' . '/composer/ClassLoader.php',
         'Composer\\Autoload\\ComposerStaticInit6594ad3f1598662b9e021df7c64f5309' => __DIR__ . '/..' . '/composer/autoload_static.php',
+        'PageController' => __DIR__ . '/../..' . '/controllers/PageController.php',
         'URI' => __DIR__ . '/../..' . '/core/URI.php',
         'connector' => __DIR__ . '/../..' . '/core/database/connect.php',
         'message' => __DIR__ . '/../..' . '/core/message.php',
@@ -18,6 +19,7 @@ class ComposerStaticInit6594ad3f1598662b9e021df7c64f5309
         'product' => __DIR__ . '/../..' . '/core/product.php',
         'querybuilder' => __DIR__ . '/../..' . '/core/database/querybuilder.php',
         'router' => __DIR__ . '/../..' . '/core/router.php',
+        'sessionController' => __DIR__ . '/../..' . '/controllers/sessionController.php',
         'validator' => __DIR__ . '/../..' . '/core/validator.php',
     );
 
