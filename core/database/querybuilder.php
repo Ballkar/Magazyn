@@ -15,20 +15,20 @@ class querybuilder
         $this->pdo=$pdo;
     }
 
-    public function log($table,$login,$password)
+    public function logUser($login,$password)
     {
-        $statement = $this->pdo->prepare("SELECT * FROM $table WHERE login=:login AND password=:password");
+        $statement = $this->pdo->prepare("SELECT * FROM `user` WHERE login=:login AND password=:password");
         $statement->bindValue(':login', $login, PDO::PARAM_STR);
         $statement->bindValue(':password', $password, PDO::PARAM_STR);
-
         $statement->execute();
-        $result = $statement->fetchAll(PDO::FETCH_ASSOC);
 
-        if ($result){
+        $user = $statement->fetchAll(PDO::FETCH_CLASS, user::class);
+
+        if ($user){
             $_SESSION["zalogowany"]=true;
-            $_SESSION["id"]=$result[0]['id'];
-            $_SESSION["login"]=$result[0]['login'];
-            $_SESSION["admin"]=$result[0]['administracja'];
+            $_SESSION["id"]=$user[0]->id;
+            $_SESSION["login"]=$user[0]->login;
+            $_SESSION["admin"]=$user[0]->administracja;
             return true;
         }else{
             $_SESSION['err_log']="Podano złe dane";

@@ -20,6 +20,7 @@ class ComposerStaticInit6594ad3f1598662b9e021df7c64f5309
         'querybuilder' => __DIR__ . '/../..' . '/core/database/querybuilder.php',
         'router' => __DIR__ . '/../..' . '/core/router.php',
         'sessionController' => __DIR__ . '/../..' . '/controllers/sessionController.php',
+        'user' => __DIR__ . '/../..' . '/core/user.php',
         'validator' => __DIR__ . '/../..' . '/core/validator.php',
     );
 

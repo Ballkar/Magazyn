@@ -14,18 +14,18 @@ class validator
     public static function checkIsNotLogged(){
         if (isset($_SESSION['zalogowany'])){
             if ($_SESSION['zalogowany']==true) {
-                header('Location:/portal');
+                header('Location:/magazyn-master');
             }
         }
     }
     public static function checkIsLogged(){
         if (!isset($_SESSION['zalogowany'])||$_SESSION['zalogowany']==false){
-            header('Location:/portal');
+            header('Location:/magazyn-master');
         }
     }
     public static function checkIsAdmin(){
         if (!isset($_SESSION['admin'])||$_SESSION['admin']==0){
-            header('Location:/portal');
+            header('Location:/magazyn-master');
         }
     }
 

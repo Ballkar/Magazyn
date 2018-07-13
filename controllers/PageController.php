@@ -36,9 +36,10 @@ class PageController
 
         $ile_stron_max = ceil($ile_przedmiotow / $_SESSION['howMuch']);
 
-        require "view/magazyn.view.php";
 
         echo "<script src='js/magazyn.js'></script>";
+        return view('magazyn',compact('products','ile_stron_max'));
+
 
     }
 
@@ -61,8 +62,7 @@ class PageController
             }
         }
 
-
-        require "view/magazyn-admin.view.php";
+        return view('magazyn-admin', compact('stanMagazynu'));
     }
 
     public function product()
@@ -70,7 +70,9 @@ class PageController
         validator::checkIsLogged();
 
         $przedmiot = App::get('database')->returnProductFromId('magazyn',$_GET['id']);
-        var_dump($przedmiot->dzial);
-        require "view/przedmiot.view.php";
+
+
+
+        return view('przedmiot', compact('przedmiot'));
     }
 }

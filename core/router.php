@@ -42,8 +42,7 @@ class router
                 throw new Exception();
             }
         } catch (Exception $e) {
-
-            die($uri);
+            die('podany adres nie istnieje');
         }
     }
     protected function callAction($controller, $action)

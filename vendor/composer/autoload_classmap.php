@@ -19,5 +19,6 @@ return array(
     'querybuilder' => $baseDir . '/core/database/querybuilder.php',
     'router' => $baseDir . '/core/router.php',
     'sessionController' => $baseDir . '/controllers/sessionController.php',
+    'user' => $baseDir . '/core/user.php',
     'validator' => $baseDir . '/core/validator.php',
 );

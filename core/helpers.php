@@ -9,5 +9,5 @@ function view($name, $data = [])
 
 function redirect($path)
 {
-    header("Location: /{$path}");
+    return header("Location: /{$path}");
 }
