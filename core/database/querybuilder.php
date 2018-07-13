@@ -5,6 +5,11 @@
  * Date: 2018-03-26
  * Time: 17:42
  */
+namespace App\core\database;
+
+use PDO;
+use App\core\user;
+use App\core\product;
 
 class querybuilder
 {

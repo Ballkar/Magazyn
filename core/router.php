@@ -5,6 +5,9 @@
  * Date: 2018-03-22
  * Time: 18:13
  */
+namespace App\core;
+
+use Exception;
 
 class router
 {
@@ -47,6 +50,8 @@ class router
     }
     protected function callAction($controller, $action)
     {
+        $controller = "App\\controllers\\{$controller}";
+        $controller = new $controller;
         if (! method_exists($controller, $action)) {
             throw new Exception(
                 "{$controller} does not respond to the {$action} action."

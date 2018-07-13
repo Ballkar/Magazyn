@@ -5,6 +5,9 @@
  * Date: 2018-07-13
  * Time: 12:46
  */
+namespace App\core;
+
+use Exception;
 
 class App
 {

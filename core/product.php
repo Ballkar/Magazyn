@@ -5,6 +5,8 @@
  * Date: 2018-07-13
  * Time: 10:22
  */
+namespace App\core;
+
 
 class product
 {

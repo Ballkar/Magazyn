@@ -5,6 +5,8 @@
  * Date: 2018-03-23
  * Time: 11:10
  */
+namespace App\core;
+
 
 class validator
 {

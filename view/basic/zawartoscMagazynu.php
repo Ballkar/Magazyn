@@ -37,7 +37,7 @@
     </table>
 
     <?php
-    navigator::giveMeTheNav($_GET['strona'], $ile_stron_max, 2, 2, '/magazyn-master/magazyn');
+    App\core\navigator::giveMeTheNav($_GET['strona'], $ile_stron_max, 2, 2, '/magazyn-master/magazyn');
     ?>
 </div>
 

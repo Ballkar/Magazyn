@@ -5,6 +5,12 @@
  * Date: 2018-07-13
  * Time: 13:02
  */
+namespace App\controllers;
+
+
+use App\core\validator;
+use App\core\App;
+use App\core\product;
 
 class PageController
 {

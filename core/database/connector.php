@@ -1,4 +1,10 @@
 <?php
+namespace App\core\database;
+
+
+
+use PDO;
+use PDOException;
 
 class connector{
     public static function create($config)
