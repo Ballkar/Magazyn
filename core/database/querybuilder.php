@@ -71,8 +71,14 @@ class querybuilder
         $statement->execute();
     }
 
-    public function deleteProduct($table, $id){
-        $statement = $this->pdo->prepare( "DELETE FROM $table WHERE `id_przedmiotu` = $id");
+    public function editProduct($id,$dataname, $datavalue){
+        $statement = $this->pdo->prepare("UPDATE `magazyn` SET $dataname=:value WHERE `id_przedmiotu` =$id");
+        $statement->bindValue(":value",$datavalue,PDO::PARAM_INT);
+        $statement->execute();
+    }
+
+    public function deleteProduct($id){
+        $statement = $this->pdo->prepare( "DELETE FROM `magazyn` WHERE `id_przedmiotu` = $id");
         $statement->execute();
     }
 

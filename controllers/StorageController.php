@@ -39,7 +39,7 @@ class StorageController
 
 
         echo "<script src='js/magazyn.js'></script>";
-        return view('magazyn',compact('products','ile_stron_max'));
+        return view('magazyn', compact('products', 'ile_stron_max'));
 
 
     }
@@ -50,7 +50,6 @@ class StorageController
         $stanMagazynu = 0;
 
 
-
         return view('magazyn-admin', compact('stanMagazynu'));
     }
 
@@ -59,19 +58,17 @@ class StorageController
         validator::checkIsAdmin();
         $stanMagazynu = 0;
 
-
-        if (isset($_POST['dzial'])) {
-            $przedmiot = [
-                'name' => validator::check_product_name($_POST['nazwa']),
-                'cena' => validator::check_product_price($_POST['cena']),
-                'ilosc' => validator::check_product_number($_POST['ilosc']),
-                'dzial' => $_POST['dzial']
-            ];
-            if ($przedmiot['name'] && $przedmiot['cena'] && $przedmiot['ilosc'] && $przedmiot['dzial']) {
-                App::get('database')->addProduct('magazyn', $przedmiot);
-                $stanMagazynu = 1;
-            }
+        $przedmiot = [
+            'name' => validator::check_product_name($_POST['nazwa']),
+            'cena' => validator::check_product_price($_POST['cena']),
+            'ilosc' => validator::check_product_number($_POST['ilosc']),
+            'dzial' => $_POST['dzial']
+        ];
+        if ($przedmiot['name'] && $przedmiot['cena'] && $przedmiot['ilosc'] && $przedmiot['dzial']) {
+            App::get('database')->addProduct('magazyn', $przedmiot);
+            $stanMagazynu = 1;
         }
+
         return view('magazyn-admin', compact('stanMagazynu'));
 
     }

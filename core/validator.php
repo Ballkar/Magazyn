@@ -55,7 +55,7 @@ class validator
         }
     }
     public static function check_product_number($number){
-        if ($number<=0) {
+        if ($number<=0 || ($number%1)==0) {
             $_SESSION['err_ilosc']="Ilość musi być liczbą całkowitą większą od 0";
             return false;
         }

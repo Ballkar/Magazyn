@@ -11,7 +11,11 @@ $router->post("magazyn-master/admin-magazyn","StorageController@save");
 
 
 
-$router->get("magazyn-master/przedmiot","ProductController@product");
+$router->get("magazyn-master/przedmiot","ProductController@edit");
+
+$router->post("magazyn-master/przedmiot","ProductController@update");
+
+$router->get("magazyn-master/przedmiot/delete","ProductController@destroy");
 
 
 $router->post("magazyn-master/login","sessionController@login");
