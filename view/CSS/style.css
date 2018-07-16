@@ -334,3 +334,9 @@ body
 .wpx100{
     width: 100px!important;
 }
+.hpx50{
+    min-height: 50px!important;
+}
+.m-10px{
+    margin: 10px!important;
+}

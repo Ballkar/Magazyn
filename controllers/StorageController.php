@@ -2,24 +2,19 @@
 /**
  * Created by PhpStorm.
  * User: Miszczu
- * Date: 2018-07-13
- * Time: 13:02
+ * Date: 2018-07-16
+ * Time: 10:45
  */
+
 namespace App\controllers;
 
 
 use App\core\validator;
 use App\core\App;
-use App\core\product;
 
-class PageController
+class StorageController
 {
-    public function home()
-    {
-        return view('index');
-    }
-
-    public function storage()
+    public function show()
     {
 
         validator::checkIsLogged();
@@ -49,7 +44,17 @@ class PageController
 
     }
 
-    public function storageAdmin()
+    public function add()
+    {
+        validator::checkIsAdmin();
+        $stanMagazynu = 0;
+
+
+
+        return view('magazyn-admin', compact('stanMagazynu'));
+    }
+
+    public function save()
     {
         validator::checkIsAdmin();
         $stanMagazynu = 0;
@@ -67,18 +72,7 @@ class PageController
                 $stanMagazynu = 1;
             }
         }
-
         return view('magazyn-admin', compact('stanMagazynu'));
-    }
 
-    public function product()
-    {
-        validator::checkIsLogged();
-
-        $przedmiot = App::get('database')->returnProductFromId('magazyn',$_GET['id']);
-
-
-
-        return view('przedmiot', compact('przedmiot'));
     }
 }

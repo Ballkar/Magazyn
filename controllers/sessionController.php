@@ -5,6 +5,7 @@
  * Date: 2018-07-13
  * Time: 13:02
  */
+
 namespace App\controllers;
 
 
@@ -13,6 +14,12 @@ use App\core\App;
 
 class sessionController
 {
+
+    public function home()
+    {
+        return view('index');
+    }
+
     public function login()
     {
         App::get('database')->logUser($_POST["login"], $_POST["password"]);
@@ -74,7 +81,6 @@ class sessionController
                 App::get('database')->logUser($login, $password);
             }
         }
-
 
         return redirect('magazyn-master');
     }
