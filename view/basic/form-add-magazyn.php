@@ -31,7 +31,7 @@
         <select name="dzial">
             <option value="1">Budowlany</option>
             <option value="2">Elektronika</option>
-            <option value="3">Motoryzacja</option>
+            <option value="3">Mechanika</option>
         </select><br/>
         <input type="submit" value="Dodaj przedmiot">
 

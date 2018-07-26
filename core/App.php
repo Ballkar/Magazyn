@@ -5,6 +5,7 @@
  * Date: 2018-07-13
  * Time: 12:46
  */
+
 namespace App\core;
 
 use Exception;
@@ -20,10 +21,11 @@ class App
 
     public static function get($key)
     {
-        if (!array_key_exists($key, static::$registry)) {
-            throw new Exception("{$key} Nie istnieje w bazie zależości");
-        }
+
         try {
+            if (!array_key_exists($key, static::$registry)) {
+                throw new Exception("{$key} Nie istnieje w bazie zależości");
+            }
             return static::$registry[$key];
         } catch (Exception $e) {
             die($e->getMessage());

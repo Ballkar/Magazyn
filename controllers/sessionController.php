@@ -78,10 +78,13 @@ class sessionController
                 unset($_SESSION['reg_email']);
                 unset($_SESSION['reg_regulamin']);
                 App::get('database')->addNewAccount('user', $login, $password, $email);
-                App::get('database')->logUser($login, $password);
+
+                return redirect('magazyn-master');
             }
         }
+            return redirect('magazyn-master/rejestracja');
 
-        return redirect('magazyn-master');
+
+
     }
 }

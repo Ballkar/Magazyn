@@ -4,15 +4,16 @@ document.addEventListener("DOMContentLoaded", function() {
     const forms = document.querySelectorAll('.d-none');
 
     for (var i=0;i<button.length;i++){
+        const formActive = forms[i];
         button[i].addEventListener('click', function () {
-            const input = this.nextElementSibling;
-            input.classList.toggle('d-none');
-            console.log(input);
+            for(var i=0;i<forms.length;i++){
+                forms[i].classList.add('d-none');
+            }
+            formActive.classList.toggle('d-none');
         });
     }
     for (var a=0;a<forms.length;a++){
         forms[a].addEventListener('input', function () {
-
             miejsce[0].innerText='zmieniłeś '+this.firstElementChild.name;
         });
     }

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Czas generowania: 23 Kwi 2018, 12:42
+-- Czas generowania: 26 Lip 2018, 14:44
 -- Wersja serwera: 10.1.29-MariaDB
 -- Wersja PHP: 7.1.12
 
@@ -41,21 +41,17 @@ CREATE TABLE `magazyn` (
 --
 
 INSERT INTO `magazyn` (`id_przedmiotu`, `nazwa_przedmiotu`, `cena`, `ilosc`, `dzial`) VALUES
-(30, 'lknl', '66', 5765, 1),
-(31, 'jiui', '777', 678, 1),
-(32, 'lkjxz', '121', 33, 1),
-(33, 'lkdsfj', '23', 233, 1),
-(34, 'gra12', '22.34', 2, 1),
-(35, 'kjdc', '13213', 213, 1),
-(36, 'ostatni rekord', '999', 99, 3),
-(37, 'dupa', '23.24', 123187, 2),
-(38, 'jushc', '23.423', 33, 1),
-(39, 'ksajhd', '23.23', 231, 2),
-(40, 'scd', '0.02', 23, 1),
-(41, 'gówno', '13', 1, 1),
-(46, 'dupa', '112', 23, 1),
-(47, 'asdasd', '23', 22, 1),
-(48, 'asd', '12', 22, 1);
+(55, 'Drewno', '12', 9, 1),
+(56, 'Metal', '99', 31, 2),
+(57, 'Baterie', '1.5', 8, 2),
+(58, 'turbina', '2000', 2, 3),
+(59, 'Złom', '23', 6, 3),
+(60, 'Radio', '2', 50, 2),
+(61, 'pilot', '12.34', 1, 2),
+(62, 'Telewior', '1200', 1, 2),
+(64, 'Opona 235/55 R18', '150', 4, 3),
+(65, 'Piła do cięcia drewna', '20', 3, 1),
+(66, 'Klucz do świec', '10', 5, 3);
 
 -- --------------------------------------------------------
 
@@ -76,13 +72,7 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `login`, `password`, `email`, `administracja`) VALUES
-(18, 'admin', 'admin1', 'admin@o2.pl', 1),
-(19, 'admin231', 'admin1', 'ads@o2.pl', 0),
-(20, 'asdasda', 'admin1', 'asdasd@o2.pl', 0),
-(21, 'asdasda2', 'admin1', 'asdasd2@o2.pl', 0),
-(22, 'asdasda22', 'admin1', 'asdasd21@o2.pl', 0),
-(23, 'asdasdada', 'admin1', 'asdaa@o2.pl', 0),
-(24, 'asdasdasad', 'admin1', 'dasd@o2.pl', 0);
+(18, 'admin', 'admin1', 'admin@o2.pl', 1);
 
 --
 -- Indeksy dla zrzutów tabel
@@ -108,13 +98,13 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT dla tabeli `magazyn`
 --
 ALTER TABLE `magazyn`
-  MODIFY `id_przedmiotu` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
+  MODIFY `id_przedmiotu` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=68;
 
 --
 -- AUTO_INCREMENT dla tabeli `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
