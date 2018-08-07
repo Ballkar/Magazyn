@@ -7,13 +7,13 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'App\\controllers\\ProductController' => $baseDir . '/controllers/ProductController.php',
+    'App\\controllers\\SessionController' => $baseDir . '/controllers/SessionController.php',
     'App\\controllers\\StorageController' => $baseDir . '/controllers/StorageController.php',
-    'App\\controllers\\sessionController' => $baseDir . '/controllers/sessionController.php',
     'App\\core\\App' => $baseDir . '/core/App.php',
+    'App\\core\\Message' => $baseDir . '/core/message.php',
     'App\\core\\URI' => $baseDir . '/core/URI.php',
+    'App\\core\\database\\QueryBuilder' => $baseDir . '/core/database/querybuilder.php',
     'App\\core\\database\\connector' => $baseDir . '/core/database/connector.php',
-    'App\\core\\database\\querybuilder' => $baseDir . '/core/database/querybuilder.php',
-    'App\\core\\message' => $baseDir . '/core/message.php',
     'App\\core\\navigator' => $baseDir . '/core/navigator.php',
     'App\\core\\product' => $baseDir . '/core/product.php',
     'App\\core\\router' => $baseDir . '/core/router.php',

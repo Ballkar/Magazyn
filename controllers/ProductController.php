@@ -17,12 +17,9 @@ class ProductController
     {
         validator::checkIsLogged();
 
-        $przedmiot = App::get('database')->returnProductFromId('magazyn', $_GET['id']);
+        $product = App::get('database')->returnProductFromId('magazyn', $_GET['id']);
 
-
-        echo "<script src='js/product.js'></script>";
-
-        return view('product', compact('przedmiot'));
+        return view('product', compact('product'));
     }
 
     public function update()
@@ -36,11 +33,9 @@ class ProductController
             App::get('database')->editProduct($_GET['id'], 'dzial', $_POST['dzial']);
         }
 
-        $przedmiot = App::get('database')->returnProductFromId('magazyn', $_GET['id']);
+        $product = App::get('database')->returnProductFromId('magazyn', $_GET['id']);
 
-        echo "<script src='js/product.js'></script>";
-
-        return view('product', compact('przedmiot'));
+        return view('product', compact('product'));
     }
 
 

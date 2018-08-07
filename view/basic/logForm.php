@@ -2,9 +2,8 @@
     <h2>Zaloguj się</h2>
     <form method="post" action="login">
         <?php
-        if (isset($_SESSION['err_log'])&&$_SESSION['err_log']==true) {
-            echo $_SESSION['err_log'];
-            unset($_SESSION['err_log']);
+        if (isset($_SESSION['err_log']) && $_SESSION['err_log'] == true) {
+            App\core\Message::ShowAndDelete('err_log', 'error');
         }
         ?>
         <input type="text" name="login" placeholder="Login">

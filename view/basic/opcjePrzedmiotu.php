@@ -1,29 +1,28 @@
 <div id="magazynContent">
 
     <div class="hpx50"><?php
-        App\core\message::ShowAndDelete('err_cena', 'error');
-        App\core\message::ShowAndDelete('err_ilosc', 'error');
+        App\core\Message::ShowAndDelete('err_cena', 'error');
+        App\core\Message::ShowAndDelete('err_ilosc', 'error');
+    ?></div>
 
-        ?></div>
+    <a class="f-right" href=<?= "/magazyn-master/przedmiot/delete?id=$product->id_przedmiotu" ?>>Usuń z magazynu</a>
 
-    <a class="f-right" href=<?="/magazyn-master/przedmiot/delete?id=$przedmiot->id_przedmiotu" ?>>Usuń z magazynu</a>
-
-    <h2><?= 'cena: ' . $przedmiot->cena ?>
+    <h2><?= 'cena: ' . $product->cena ?>
         <button class="m-10px">Zmień cene</button>
         <form class="d-none" method="post">
-            <input type="text" name="cena" value="<?= $przedmiot->cena ?>">
+            <input type="text" name="cena" value="<?= $product->cena ?>">
             <input type="submit">
         </form>
     </h2>
 
-    <h2><?= 'ilość: ' . $przedmiot->ilosc ?>
+    <h2><?= 'ilość: ' . $product->ilosc ?>
         <button class="m-10px">Zmień ilość</button>
         <form class="d-none" method="post">
-            <input type="number" name="ilosc" value="<?= $przedmiot->ilosc ?>">
+            <input type="number" name="ilosc" value="<?= $product->ilosc ?>">
             <input type="submit">
         </form>
     </h2>
-    <h2><?= 'dział: ' . $przedmiot->dzial ?>
+    <h2><?= 'dział: ' . $product->dzial ?>
         <button class="m-10px">Przenieś do innego działu</button>
         <form class="d-none" method="post">
             <select name="dzial">

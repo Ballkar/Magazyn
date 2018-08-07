@@ -4,5 +4,3 @@ if (isset($_SESSION["zalogowany"])&&$_SESSION['zalogowany']=true) {
 } else {
     require_once "logForm.php";
 }
-?>
-
