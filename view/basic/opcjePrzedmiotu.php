@@ -5,7 +5,7 @@
         App\core\Message::ShowAndDelete('err_ilosc', 'error');
     ?></div>
 
-    <a class="f-right" href=<?= "/magazyn-master/przedmiot/delete?id=$product->id_przedmiotu" ?>>Usuń z magazynu</a>
+    <a class="f-right" href=<?= "/magazyn-master/product/delete?id=$product->id_przedmiotu" ?>>Usuń z magazynu</a>
 
     <h2><?= 'cena: ' . $product->cena ?>
         <button class="m-10px">Zmień cene</button>

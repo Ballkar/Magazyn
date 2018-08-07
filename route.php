@@ -1,25 +1,26 @@
 <?php
 
-$router->get("magazyn-master", "SessionController@home");
+use App\core\App;
 
-$router->get("magazyn-master/magazyn", "StorageController@show");
-$router->post("magazyn-master/magazyn", "StorageController@show");
+$router->get(App::get('config')['App']['AppName'], "SessionController@home");
 
-$router->get("magazyn-master/admin-magazyn", "StorageController@add");
+$router->get(App::get('config')['App']['AppName']."/warehouse", "StorageController@show");
+$router->post(App::get('config')['App']['AppName']."/warehouse", "StorageController@show");
 
-$router->post("magazyn-master/admin-magazyn", "StorageController@save");
+$router->get(App::get('config')['App']['AppName']."/admin-warehouse", "StorageController@add");
 
-
-
-$router->get("magazyn-master/przedmiot", "ProductController@edit");
-
-$router->post("magazyn-master/przedmiot", "ProductController@update");
-
-$router->get("magazyn-master/przedmiot/delete", "ProductController@destroy");
+$router->post(App::get('config')['App']['AppName']."/admin-warehouse", "StorageController@save");
 
 
-$router->post("magazyn-master/login", "SessionController@login");
-$router->post("magazyn-master/logout", "SessionController@logout");
+$router->get(App::get('config')['App']['AppName']."/product", "ProductController@edit");
 
-$router->get("magazyn-master/rejestracja", "SessionController@register");
-$router->post("magazyn-master/rejestracja", "SessionController@store");
+$router->post(App::get('config')['App']['AppName']."/product", "ProductController@update");
+
+$router->get(App::get('config')['App']['AppName']."/product/delete", "ProductController@destroy");
+
+
+$router->post(App::get('config')['App']['AppName']."/login", "SessionController@login");
+$router->post(App::get('config')['App']['AppName']."/logout", "SessionController@logout");
+
+$router->get(App::get('config')['App']['AppName']."/register", "SessionController@register");
+$router->post(App::get('config')['App']['AppName']."/register", "SessionController@store");

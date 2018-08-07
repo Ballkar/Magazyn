@@ -11,7 +11,7 @@ class Connector
     {
         try {
             return new PDO(
-                $config["dsn"] . "; dbname=" . $config["dbname"] . ";charset=" . $config["charset"],
+                $config["dsn"] . "; dbname=" . $config["databaseName"] . ";charset=" . $config["charset"],
                 $config["user"],
                 $config["password"],
                 $config["option"]

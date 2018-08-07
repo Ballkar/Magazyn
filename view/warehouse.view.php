@@ -11,7 +11,7 @@ require "basic/nav.php";
         </div>
         <div id="TopContent">
 
-            <form method="POST" action="/magazyn-master/magazyn">
+            <form method="POST" action="/magazyn-master/warehouse">
                 Ile rekodrów na jednej stronie:
                 <select name='howMuch'>
                     <option value="2"<?php if ($_SESSION['howMuch'] == 2) {

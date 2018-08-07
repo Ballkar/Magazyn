@@ -1,7 +1,7 @@
 body
 {
-    padding: 0px;
-    margin: 0px;
+    padding: 0;
+    margin: 0;
 }
 #nav
 {
@@ -40,8 +40,7 @@ body
     display: inline-block;
     width: 15%;
     height: 135px;
-    padding: 15px;
-    padding-top: 10px;
+    padding: 10px 15px 15px 15px;
     float: left;
     overflow: hidden;
     user-select: none;
@@ -49,7 +48,7 @@ body
 }
 #log form
 {
-    margin-bottom: 0px;
+    margin-bottom: 0;
 }
 #log input
 {
@@ -132,7 +131,7 @@ body
 
     height: 164px;
     border: 1px solid #ddd;
-    border-top: 0px;
+    border-top: 0;
 }
 #TopContent
 {

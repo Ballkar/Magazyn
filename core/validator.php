@@ -6,15 +6,15 @@ class Validator
 {
     public static function checkIsNotLogged()
     {
-        if (isset($_SESSION['zalogowany'])) {
-            if ($_SESSION['zalogowany']==true) {
+        if (isset($_SESSION['logged'])) {
+            if ($_SESSION['logged']==true) {
                 header('Location:/magazyn-master');
             }
         }
     }
     public static function checkIsLogged()
     {
-        if (!isset($_SESSION['zalogowany'])||$_SESSION['zalogowany']==false) {
+        if (!isset($_SESSION['logged'])||$_SESSION['logged']==false) {
             header('Location:/magazyn-master');
         }
     }
@@ -25,39 +25,39 @@ class Validator
         }
     }
 
-    public static function check_product_name($name)
+    public static function checkProductName($name)
     {
         if (strlen($name)>30||strlen($name)<=0) {
-            $_SESSION['err_nazwa']="Nazwa przedmiotu powinna mieć od 1 do 29 znaków";
+            $_SESSION['errorName']="Nazwa przedmiotu powinna mieć od 1 do 29 znaków";
             return false;
         } else {
             return $name;
         }
     }
-    public static function check_product_price($price)
+    public static function checkProductPrice($price)
     {
         if ($price<=0) {
-            $_SESSION['err_cena']="Podana cena musi być liczbą większą od 0";
+            $_SESSION['errorPrice']="Podana cena musi być liczbą większą od 0";
             return false;
         } elseif (is_numeric($price)) {//poprawna liczba
             $price = round($price, 2);
             return $price;
         } else {
-            $_SESSION['err_cena']="Podana cena musi być liczbą większą od 0";
+            $_SESSION['errorPrice']="Podana cena musi być liczbą większą od 0";
             return false;
         }
     }
-    public static function check_product_number($number)
+    public static function checkProductNumber($number)
     {
         if ($number<=0) {
-            $_SESSION['err_ilosc']="Ilość musi być liczbą całkowitą większą od 0";
+            $_SESSION['errorNumber']="Ilość musi być liczbą całkowitą większą od 0";
             return false;
         } else {
             return $number;
         }
     }
 
-    public static function check_login($login)
+    public static function checkLogin($login)
     {
         if (strlen($login)>3&&strlen($login)<20) {
             if (ctype_alnum($login)) {
@@ -72,7 +72,7 @@ class Validator
             return false;
         }
     }
-    public static function check_password($password, $password2)
+    public static function checkPassword($password, $password2)
     {
         if (strlen($password)>5 && strlen($password)<14) {
             if ($password==$password2) {
@@ -86,7 +86,7 @@ class Validator
             return false;
         }
     }
-    public static function check_email($email)
+    public static function checkEmail($email)
     {
         $emailBezZlychZnakow = filter_var($email, FILTER_SANITIZE_EMAIL);
         if ($email!=$emailBezZlychZnakow||filter_var($email, FILTER_VALIDATE_EMAIL)==false) {

@@ -43,15 +43,20 @@ class Router
             die('podany adres nie istnieje');
         }
     }
+
     protected function callAction($controller, $action)
     {
         $controller = "App\\controllers\\{$controller}";
         $controller = new $controller;
-        if (! method_exists($controller, $action)) {
-            throw new Exception(
-                "{$controller} does not respond to the {$action} action."
-            );
+        try {
+            if (!method_exists($controller, $action)) {
+                throw new Exception(
+                    "{$controller} does not respond to the {$action} action."
+                );
+            }
+        } catch (Exception $e) {
+            die($e);
         }
-        return  (new $controller)->$action();
+        return (new $controller)->$action();
     }
 }

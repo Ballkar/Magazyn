@@ -21,29 +21,31 @@ class SessionController
 
     public function logout()
     {
-        if (isset($_SESSION['zalogowany']) && $_SESSION["zalogowany"] = true) {
-            unset($_SESSION['zalogowany']);
+
+
+        if (isset($_SESSION['logged']) && $_SESSION["logged"] = true) {
+            unset($_SESSION['logged']);
             unset($_SESSION['admin']);
             session_destroy();
         }
 
-        return redirect('magazyn-master');
+        return redirect(App::get('config')['App']['AppName']);
     }
 
     public function register()
     {
-        validator::checkIsNotLogged();
+        Validator::checkIsNotLogged();
 
-        return view('rejestracja');
+        return view('register');
     }
 
     public function store()
     {
-        validator::checkIsNotLogged();
+        Validator::checkIsNotLogged();
 
-        $login = Validator::check_login($_POST['login']);
-        $password = Validator::check_password($_POST['haslo'], $_POST['haslo2']);
-        $email = Validator::check_email($_POST['email']);
+        $login = Validator::checkLogin($_POST['login']);
+        $password = Validator::checkPassword($_POST['haslo'], $_POST['haslo2']);
+        $email = Validator::checkEmail($_POST['email']);
         if (!isset($_POST['regulamin'])) {
             $regulamin = false;
             $_SESSION['err_reg_regulamin'] = "Należy zapoznac się z regulaminem";
@@ -71,9 +73,9 @@ class SessionController
                 unset($_SESSION['reg_regulamin']);
                 App::get('database')->addNewAccount('user', $login, $password, $email);
 
-                return redirect('magazyn-master');
+                return redirect(App::get('config')['App']['AppName']);
             }
         }
-        return redirect('magazyn-master/rejestracja');
+        return redirect(App::get('config')['App']['AppName'].'/rejestracja');
     }
 }

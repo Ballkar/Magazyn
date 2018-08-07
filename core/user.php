@@ -7,5 +7,5 @@ class User
     public $id;
     public $login;
     public $email;
-    public $administracja;
+    public $admin;
 }

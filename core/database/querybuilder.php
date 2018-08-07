@@ -25,7 +25,7 @@ class QueryBuilder
         $user = $statement->fetchAll(PDO::FETCH_CLASS, User::class);
 
         if ($user) {
-            $_SESSION["zalogowany"] = true;
+            $_SESSION["logged"] = true;
             $_SESSION["id"] = $user[0]->id;
             $_SESSION["login"] = $user[0]->login;
             $_SESSION["admin"] = $user[0]->administracja;

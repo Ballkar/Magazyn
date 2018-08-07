@@ -1,11 +1,11 @@
 document.addEventListener("DOMContentLoaded", function() {
-    const tabela =document.querySelector('#tabela');
-    const product = tabela.querySelectorAll('.product');
+    const table =document.querySelector('#tabela');
+    const product = table.querySelectorAll('.product');
 
     for (var i=0;i<product.length;i++){
         const id = product[i].firstElementChild.innerText;
         product[i].addEventListener('click', function () {
-            window.location = '/magazyn-master/przedmiot?id='+id
+            window.location = '/magazyn-master/product?id='+id
         });
     }
 

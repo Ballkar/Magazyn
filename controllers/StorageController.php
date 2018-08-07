@@ -31,7 +31,7 @@ class StorageController
 
 
         echo "<script src='js/magazyn.js'></script>";
-        return view('magazyn', compact('products', 'ile_stron_max'));
+        return view('warehouse', compact('products', 'ile_stron_max'));
     }
 
     public function add()
@@ -40,7 +40,7 @@ class StorageController
         $stanMagazynu = 0;
 
 
-        return view('magazyn-admin', compact('stanMagazynu'));
+        return view('warehouse-admin', compact('stanMagazynu'));
     }
 
     public function save()
@@ -49,9 +49,9 @@ class StorageController
         $stanMagazynu = 0;
 
         $przedmiot = [
-            'name' => Validator::check_product_name($_POST['nazwa']),
-            'cena' => Validator::check_product_price($_POST['cena']),
-            'ilosc' => Validator::check_product_number($_POST['ilosc']),
+            'name' => Validator::checkProductName($_POST['nazwa']),
+            'cena' => Validator::checkProductPrice($_POST['cena']),
+            'ilosc' => Validator::checkProductNumber($_POST['ilosc']),
             'dzial' => $_POST['dzial']
         ];
         if ($przedmiot['name'] && $przedmiot['cena'] && $przedmiot['ilosc'] && $przedmiot['dzial']) {
@@ -59,6 +59,6 @@ class StorageController
             $stanMagazynu = 1;
         }
 
-        return view('magazyn-admin', compact('stanMagazynu'));
+        return view('warehouse-admin', compact('stanMagazynu'));
     }
 }

@@ -1,24 +1,24 @@
 <div id="magazynContent">
 
-    <form method="POST" action="/magazyn-master/admin-magazyn">
+    <form method="POST" action="/magazyn-master/admin-warehouse">
         <label>Wpisz nazwe Przedmiotu: </label>
         <br/>
         <?php
-        App\core\Message::ShowAndDelete('err_nazwa', 'error');
+        App\core\Message::ShowAndDelete('errName', 'error');
         ?>
         <input type="text" placeholder="" name="nazwa"><br/>
 
         <label>Wpisz cene: </label>
         <br/>
         <?php
-        App\core\Message::ShowAndDelete('err_cena', 'error');
+        App\core\Message::ShowAndDelete('errPrice', 'error');
         ?>
         <input type="text" placeholder="" name="cena"><br/>
 
         <label>Wpisz ilość: </label>
         <br/>
         <?php
-        App\core\Message::ShowAndDelete('err_ilosc', 'error');
+        App\core\Message::ShowAndDelete('errNumber', 'error');
         ?>
         <input type="number" placeholder="" name="ilosc"><br/>
 
@@ -26,7 +26,7 @@
         <br/>
         <?php
 
-        App\core\Message::ShowAndDelete('err_dzial', 'error');
+        App\core\Message::ShowAndDelete('errDepartment', 'error');
         ?>
         <select name="dzial">
             <option value="1">Budowlany</option>

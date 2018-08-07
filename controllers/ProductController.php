@@ -19,9 +19,9 @@ class ProductController
     public function update()
     {
         Validator::checkIsLogged();
-        if (isset($_POST['cena']) && $cena = validator::check_product_price($_POST['cena'])) {
+        if (isset($_POST['cena']) && $cena = validator::checkProductPrice($_POST['cena'])) {
             App::get('database')->editProduct($_GET['id'], 'cena', $cena);
-        } elseif (isset($_POST['ilosc'])&& $ilosc=validator::check_product_number($_POST['ilosc'])) {
+        } elseif (isset($_POST['ilosc'])&& $ilosc=validator::checkProductNumber($_POST['ilosc'])) {
             App::get('database')->editProduct($_GET['id'], 'ilosc', $_POST['ilosc']);
         } elseif (isset($_POST['dzial'])) {
             App::get('database')->editProduct($_GET['id'], 'dzial', $_POST['dzial']);
@@ -40,6 +40,6 @@ class ProductController
         App::get('database')->deleteProduct($_GET['id']);
 
 
-        return redirect('magazyn-master/magazyn');
+        return redirect('magazyn-master/warehouse');
     }
 }
