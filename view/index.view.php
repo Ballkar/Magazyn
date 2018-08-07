@@ -8,7 +8,6 @@ require "basic/nav.php";
     <div id="TOP">
 
 
-
         <div id="textbox">
             <h1>Pierwszy Projekt</h1>
         </div>
@@ -22,9 +21,6 @@ require "basic/nav.php";
         ?>
 
     </div>
-
-
-
 
 
 <?php

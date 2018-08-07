@@ -1,16 +1,10 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Miszczu
- * Date: 2018-03-26
- * Time: 17:42
- */
 
 namespace App\core\database;
 
 use PDO;
-use App\core\user;
-use App\core\product;
+use App\core\User;
+use App\core\Product;
 
 class QueryBuilder
 {
@@ -28,7 +22,7 @@ class QueryBuilder
         $statement->bindValue(':password', $password, PDO::PARAM_STR);
         $statement->execute();
 
-        $user = $statement->fetchAll(PDO::FETCH_CLASS, user::class);
+        $user = $statement->fetchAll(PDO::FETCH_CLASS, User::class);
 
         if ($user) {
             $_SESSION["zalogowany"] = true;
@@ -55,14 +49,14 @@ class QueryBuilder
     {
         $statement = $this->pdo->prepare("SELECT * FROM $table WHERE id_przedmiotu>0  LIMIT $skip,$stop");
         $statement->execute();
-        return $statement->fetchAll(PDO::FETCH_CLASS, product::class);
+        return $statement->fetchAll(PDO::FETCH_CLASS, Product::class);
     }
 
     public function returnProductFromId($table, $id)
     {
         $statement = $this->pdo->prepare("SELECT * FROM $table WHERE `id_przedmiotu`=$id");
         $statement->execute();
-        $product = $statement->fetchAll(PDO::FETCH_CLASS, product::class);
+        $product = $statement->fetchAll(PDO::FETCH_CLASS, Product::class);
         return $product[0];
     }
 

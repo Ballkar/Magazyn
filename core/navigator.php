@@ -1,12 +1,14 @@
 <?php
+
 namespace App\core;
 
-class navigator
+class Navigator
 {
     public static function giveMeTheNav($aktualna, $ilemax, $przod, $tyl, $link)
     {
         echo "<div class='nawigacja'>";
-        //Wyświetlanie przycisku poprzedni gdy jesteś na stronie większej niż 1. a jak nie to daj 2 divy żeby sie ni przesuwało
+        //Wyświetlanie przycisku poprzedni gdy jesteś na stronie większej niż 1. a jak nie to daj 2 divy
+        // żeby sie ni przesuwało
         if ($aktualna>=2) {
             echo "<a href='$link?strona=".($aktualna-1)."' class='strona1'>Poprzednia</a>";
             // jak jest przycisk poprzedni to wypisz przyciski do stron zaczynając od strony -2 od aktualnej

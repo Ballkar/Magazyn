@@ -7,7 +7,6 @@ require "basic/nav.php";
     <div id="TOP">
 
 
-
         <div id="textbox">
             <h1>Wylogowanie</h1>
         </div>
@@ -21,7 +20,6 @@ require "basic/nav.php";
         ?>
 
     </div>
-
 
 
 <?php

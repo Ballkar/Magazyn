@@ -1,15 +1,10 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Miszczu
- * Date: 2018-03-22
- * Time: 18:13
- */
+
 namespace App\core;
 
 use Exception;
 
-class router
+class Router
 {
     protected $route = [
         "GET" => [],

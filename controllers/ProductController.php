@@ -1,21 +1,15 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Miszczu
- * Date: 2018-07-13
- * Time: 13:02
- */
 
 namespace App\controllers;
 
-use App\core\validator;
+use App\core\Validator;
 use App\core\App;
 
 class ProductController
 {
     public function edit()
     {
-        validator::checkIsLogged();
+        Validator::checkIsLogged();
 
         $product = App::get('database')->returnProductFromId('magazyn', $_GET['id']);
 
@@ -24,7 +18,7 @@ class ProductController
 
     public function update()
     {
-        validator::checkIsLogged();
+        Validator::checkIsLogged();
         if (isset($_POST['cena']) && $cena = validator::check_product_price($_POST['cena'])) {
             App::get('database')->editProduct($_GET['id'], 'cena', $cena);
         } elseif (isset($_POST['ilosc'])&& $ilosc=validator::check_product_number($_POST['ilosc'])) {
@@ -41,7 +35,7 @@ class ProductController
 
     public function destroy()
     {
-        validator::checkIsAdmin();
+        Validator::checkIsAdmin();
 
         App::get('database')->deleteProduct($_GET['id']);
 

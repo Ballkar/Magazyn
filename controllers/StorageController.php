@@ -1,21 +1,15 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Miszczu
- * Date: 2018-07-16
- * Time: 10:45
- */
 
 namespace App\controllers;
 
-use App\core\validator;
+use App\core\Validator;
 use App\core\App;
 
 class StorageController
 {
     public function show()
     {
-        validator::checkIsLogged();
+        Validator::checkIsLogged();
 
         //rekody ile wyświetlić na strone
         if (isset($_POST['howMuch'])) {
@@ -42,7 +36,7 @@ class StorageController
 
     public function add()
     {
-        validator::checkIsAdmin();
+        Validator::checkIsAdmin();
         $stanMagazynu = 0;
 
 
@@ -51,13 +45,13 @@ class StorageController
 
     public function save()
     {
-        validator::checkIsAdmin();
+        Validator::checkIsAdmin();
         $stanMagazynu = 0;
 
         $przedmiot = [
-            'name' => validator::check_product_name($_POST['nazwa']),
-            'cena' => validator::check_product_price($_POST['cena']),
-            'ilosc' => validator::check_product_number($_POST['ilosc']),
+            'name' => Validator::check_product_name($_POST['nazwa']),
+            'cena' => Validator::check_product_price($_POST['cena']),
+            'ilosc' => Validator::check_product_number($_POST['ilosc']),
             'dzial' => $_POST['dzial']
         ];
         if ($przedmiot['name'] && $przedmiot['cena'] && $przedmiot['ilosc'] && $przedmiot['dzial']) {

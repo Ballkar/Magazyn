@@ -18,15 +18,15 @@ require "basic/nav.php";
         <form action="/magazyn-master/rejestracja" method="POST">
 
             <?php
-            App\core\message::ShowAndDelete('reg_success', 'info');
+            App\core\Message::ShowAndDelete('reg_success', 'info');
             ?>
 
             <label FOR="login">Podaj login</label>
             <?php
-            App\core\message::ShowAndDelete('err_reg_login', 'error_register');
+            App\core\Message::ShowAndDelete('err_reg_login', 'error_register');
             ?>
             <input type="text" placeholder="Login" name="login" id="login" value="<?php
-            App\core\message::ShowValueAndDelete('reg_login');
+            App\core\Message::ShowValueAndDelete('reg_login');
             ?>">
 
 
@@ -60,7 +60,7 @@ require "basic/nav.php";
             <label FOR="regulamin">Oświadczam że przeczytałem <a href="https://pl.wikipedia.org/wiki/Regulamin">
                     regulamin</a> i się z nim zgadzam.</label>
             <?php
-            App\core\message::ShowAndDelete('err_reg_regulamin', "error_register");
+            App\core\Message::ShowAndDelete('err_reg_regulamin', "error_register");
             ?>
             <input type="checkbox" name="regulamin" id="regulamin" <?php
             if (isset($_SESSION['reg_regulamin'])) {

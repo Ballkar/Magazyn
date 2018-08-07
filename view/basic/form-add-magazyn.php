@@ -4,7 +4,7 @@
         <label>Wpisz nazwe Przedmiotu: </label>
         <br/>
         <?php
-        App\core\message::ShowAndDelete('err_nazwa', 'error');
+        App\core\Message::ShowAndDelete('err_nazwa', 'error');
         ?>
         <input type="text" placeholder="" name="nazwa"><br/>
 

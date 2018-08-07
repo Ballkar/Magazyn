@@ -1,10 +1,11 @@
 <?php
+
 namespace App\core\database;
 
 use PDO;
 use PDOException;
 
-class connector
+class Connector
 {
     public static function create($config)
     {
@@ -16,7 +17,7 @@ class connector
                 $config["option"]
             );
         } catch (PDOException $e) {
-            die("error:". $e->getMessage());
+            die("error:" . $e->getMessage());
         }
     }
 }

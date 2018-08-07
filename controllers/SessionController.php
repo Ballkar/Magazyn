@@ -2,7 +2,7 @@
 
 namespace App\controllers;
 
-use App\core\validator;
+use App\core\Validator;
 use App\core\App;
 
 class SessionController
@@ -41,9 +41,9 @@ class SessionController
     {
         validator::checkIsNotLogged();
 
-        $login = validator::check_login($_POST['login']);
-        $password = validator::check_password($_POST['haslo'], $_POST['haslo2']);
-        $email = validator::check_email($_POST['email']);
+        $login = Validator::check_login($_POST['login']);
+        $password = Validator::check_password($_POST['haslo'], $_POST['haslo2']);
+        $email = Validator::check_email($_POST['email']);
         if (!isset($_POST['regulamin'])) {
             $regulamin = false;
             $_SESSION['err_reg_regulamin'] = "Należy zapoznac się z regulaminem";
