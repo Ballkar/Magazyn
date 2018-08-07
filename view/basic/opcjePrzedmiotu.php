@@ -1,8 +1,8 @@
 <div id="magazynContent">
 
     <div class="hpx50"><?php
-        App\core\message::ShowAndDelete('err_cena','error');
-        App\core\message::ShowAndDelete('err_ilosc','error');
+        App\core\message::ShowAndDelete('err_cena', 'error');
+        App\core\message::ShowAndDelete('err_ilosc', 'error');
 
         ?></div>
 

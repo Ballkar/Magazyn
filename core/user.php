@@ -13,5 +13,4 @@ class user
     public $login;
     public $email;
     public $administracja;
-
 }

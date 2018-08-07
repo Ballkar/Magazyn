@@ -8,14 +8,11 @@
 
 namespace App\controllers;
 
-
 use App\core\validator;
 use App\core\App;
 
 class ProductController
 {
-
-
     public function edit()
     {
         validator::checkIsLogged();
@@ -33,9 +30,9 @@ class ProductController
         validator::checkIsLogged();
         if (isset($_POST['cena']) && $cena = validator::check_product_price($_POST['cena'])) {
             App::get('database')->editProduct($_GET['id'], 'cena', $cena);
-        }elseif (isset($_POST['ilosc'])&& $ilosc=validator::check_product_number($_POST['ilosc'])){
+        } elseif (isset($_POST['ilosc'])&& $ilosc=validator::check_product_number($_POST['ilosc'])) {
             App::get('database')->editProduct($_GET['id'], 'ilosc', $_POST['ilosc']);
-        }elseif (isset($_POST['dzial'])){
+        } elseif (isset($_POST['dzial'])) {
             App::get('database')->editProduct($_GET['id'], 'dzial', $_POST['dzial']);
         }
 

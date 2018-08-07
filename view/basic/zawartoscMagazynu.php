@@ -15,10 +15,10 @@
         foreach ($products as $key) {
             echo "<tr class='product' data-show=0>";
 
-                echo "<td class='kolumna'>".$key->id_przedmiotu."</td>";
-                echo "<td class='kolumna'>".$key->nazwa_przedmiotu."</td>";
-                echo "<td class='kolumna'>".$key->cena."</td>";
-                echo "<td class='kolumna'>".$key->ilosc."</td>";
+            echo "<td class='kolumna'>".$key->id_przedmiotu."</td>";
+            echo "<td class='kolumna'>".$key->nazwa_przedmiotu."</td>";
+            echo "<td class='kolumna'>".$key->cena."</td>";
+            echo "<td class='kolumna'>".$key->ilosc."</td>";
 
             echo "</tr>";
         }

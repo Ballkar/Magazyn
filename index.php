@@ -12,4 +12,3 @@ session_start();
 $router = router::load('route.php');
 
 $router->direct(URI::give(), $_SERVER["REQUEST_METHOD"]);
-

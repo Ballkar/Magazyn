@@ -10,18 +10,29 @@ namespace App\core;
 
 use Exception;
 
+/**
+ * Class App
+ * @package App\core
+ */
 class App
 {
     protected static $registry = [];
 
-    public static function bind($key, $value)
+    /**
+     * @param string $key
+     * @param $value
+     */
+    public static function bind(string $key, $value)
     {
         static::$registry[$key] = $value;
     }
 
-    public static function get($key)
+    /**
+     * @param string $key
+     * @return mixed
+     */
+    public static function get(string $key)
     {
-
         try {
             if (!array_key_exists($key, static::$registry)) {
                 throw new Exception("{$key} Nie istnieje w bazie zależości");

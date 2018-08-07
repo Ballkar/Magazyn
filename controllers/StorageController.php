@@ -8,7 +8,6 @@
 
 namespace App\controllers;
 
-
 use App\core\validator;
 use App\core\App;
 
@@ -16,7 +15,6 @@ class StorageController
 {
     public function show()
     {
-
         validator::checkIsLogged();
 
         //rekody ile wyświetlić na strone
@@ -40,8 +38,6 @@ class StorageController
 
         echo "<script src='js/magazyn.js'></script>";
         return view('magazyn', compact('products', 'ile_stron_max'));
-
-
     }
 
     public function add()
@@ -70,6 +66,5 @@ class StorageController
         }
 
         return view('magazyn-admin', compact('stanMagazynu'));
-
     }
 }

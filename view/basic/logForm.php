@@ -2,7 +2,7 @@
     <h2>Zaloguj się</h2>
     <form method="post" action="login">
         <?php
-        if (isset($_SESSION['err_log'])&&$_SESSION['err_log']==true){
+        if (isset($_SESSION['err_log'])&&$_SESSION['err_log']==true) {
             echo $_SESSION['err_log'];
             unset($_SESSION['err_log']);
         }

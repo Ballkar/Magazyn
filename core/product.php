@@ -7,7 +7,6 @@
  */
 namespace App\core;
 
-
 class product
 {
     public $id_przedmiotu;
@@ -15,6 +14,4 @@ class product
     public $cena;
     public $ilosc;
     public $dzial;
-
-
 }

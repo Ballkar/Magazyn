@@ -11,10 +11,9 @@ require "basic/nav.php";
         <div id="TopContent">
             <h1>
                 <?php
-                if (isset($_SESSION['zalogowany'])&&$_SESSION['zalogowany']==true)
-                {
+                if (isset($_SESSION['zalogowany'])&&$_SESSION['zalogowany']==true) {
                     echo "Witaj w magazynie";
-                }else{
+                } else {
                     $_SESSION['err_log']="Podano złe dane";
                     echo "Podałeś nieprawidłowe dane";
                 }

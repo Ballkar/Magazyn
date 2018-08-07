@@ -59,5 +59,4 @@ class router
         }
         return  (new $controller)->$action();
     }
-
 }

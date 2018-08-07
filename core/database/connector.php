@@ -1,12 +1,11 @@
 <?php
 namespace App\core\database;
 
-
-
 use PDO;
 use PDOException;
 
-class connector{
+class connector
+{
     public static function create($config)
     {
         try {
@@ -16,8 +15,7 @@ class connector{
                 $config["password"],
                 $config["option"]
             );
-        }catch (PDOException $e)
-        {
+        } catch (PDOException $e) {
             die("error:". $e->getMessage());
         }
     }

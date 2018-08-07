@@ -8,13 +8,11 @@
 
 namespace App\controllers;
 
-
 use App\core\validator;
 use App\core\App;
 
 class sessionController
 {
-
     public function home()
     {
         return view('index');
@@ -82,9 +80,6 @@ class sessionController
                 return redirect('magazyn-master');
             }
         }
-            return redirect('magazyn-master/rejestracja');
-
-
-
+        return redirect('magazyn-master/rejestracja');
     }
 }
