@@ -16,10 +16,10 @@ require "basic/nav.php";
             Tutaj możesz obsługiwać magazyn.
             <br/>
             <?php
-            if ($stanMagazynu == 1) {
+            if ($storageStatus == 1) {
                 echo "<span class='info'>Dodałeś przedmiot</span>";
             }
-            if ($stanMagazynu == 2) {
+            if ($storageStatus == 2) {
                 echo "<span class='info'>Usunąłeś przedmiot</span>";
             }
             ?>

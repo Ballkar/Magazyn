@@ -4,9 +4,9 @@ namespace App\core;
 
 class Product
 {
-    public $id_przedmiotu;
-    public $nazwa_przedmiotu;
-    public $cena;
-    public $ilosc;
-    public $dzial;
+    public $id_product;
+    public $productName;
+    public $price;
+    public $number;
+    public $section;
 }

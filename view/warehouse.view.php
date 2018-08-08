@@ -12,27 +12,27 @@ require "basic/nav.php";
         <div id="TopContent">
 
             <form method="POST" action="/magazyn-master/warehouse">
-                Ile rekodrów na jednej stronie:
-                <select name='howMuch'>
-                    <option value="2"<?php if ($_SESSION['howMuch'] == 2) {
+                <label for="recordsPerPage">Ile rekodrów na jednej stronie:</label>
+                <select id="recordsPerPage" name='recordsPerPage'>
+                    <option value="2"<?php if ($_SESSION['recordsPerPage'] == 2) {
                         echo "selected";
                     }
 ?>>
                         2
                     </option>
-                    <option value="3"<?php if ($_SESSION['howMuch'] == 3) {
+                    <option value="3"<?php if ($_SESSION['recordsPerPage'] == 3) {
                         echo "selected";
                     }
 ?>>
                         3
                     </option>
-                    <option value="5"<?php if ($_SESSION['howMuch'] == 5) {
+                    <option value="5"<?php if ($_SESSION['recordsPerPage'] == 5) {
                         echo "selected";
                     }
 ?>>
                         5
                     </option>
-                    <option value="10"<?php if ($_SESSION['howMuch'] == 10) {
+                    <option value="10"<?php if ($_SESSION['recordsPerPage'] == 10) {
                         echo "selected";
                     }
 ?>>

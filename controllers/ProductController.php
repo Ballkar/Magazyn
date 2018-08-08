@@ -19,12 +19,13 @@ class ProductController
     public function update()
     {
         Validator::checkIsLogged();
-        if (isset($_POST['cena']) && $cena = validator::checkProductPrice($_POST['cena'])) {
-            App::get('database')->editProduct($_GET['id'], 'cena', $cena);
-        } elseif (isset($_POST['ilosc'])&& $ilosc=validator::checkProductNumber($_POST['ilosc'])) {
-            App::get('database')->editProduct($_GET['id'], 'ilosc', $_POST['ilosc']);
-        } elseif (isset($_POST['dzial'])) {
-            App::get('database')->editProduct($_GET['id'], 'dzial', $_POST['dzial']);
+
+        if (isset($_POST['price']) && $price = validator::checkProductPrice($_POST['price'])) {
+            App::get('database')->editProduct($_GET['id'], 'price', $price);
+        } elseif (isset($_POST['number'])&& $number=validator::checkProductNumber($_POST['number'])) {
+            App::get('database')->editProduct($_GET['id'], 'number', $_POST['number']);
+        } elseif (isset($_POST['section'])) {
+            App::get('database')->editProduct($_GET['id'], 'section', $_POST['section']);
         }
 
         $product = App::get('database')->returnProductFromId('magazyn', $_GET['id']);

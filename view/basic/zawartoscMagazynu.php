@@ -15,17 +15,17 @@
         foreach ($products as $key) {
             echo "<tr class='product' data-show=0>";
 
-            echo "<td class='kolumna'>".$key->id_przedmiotu."</td>";
-            echo "<td class='kolumna'>".$key->nazwa_przedmiotu."</td>";
-            echo "<td class='kolumna'>".$key->cena."</td>";
-            echo "<td class='kolumna'>".$key->ilosc."</td>";
+            echo "<td class='kolumna'>" . $key->id . "</td>";
+            echo "<td class='kolumna'>" . $key->productName . "</td>";
+            echo "<td class='kolumna'>" . $key->price . "</td>";
+            echo "<td class='kolumna'>" . $key->number . "</td>";
 
             echo "</tr>";
         }
 
         //puste kolumny(wygląd tabeli)
-        if ((count($products) / $_SESSION['howMuch']) < 1) {
-            for ($i = (count($products)); ($i / $_SESSION['howMuch']) < 1; $i++) {
+        if ((count($products) / $_SESSION['recordsPerPage']) < 1) {
+            for ($i = (count($products)); ($i / $_SESSION['recordsPerPage']) < 1; $i++) {
                 echo "<tr class='ProductEmpty'>";
                 for ($a = 1; $a <= 4; $a++) {
                     echo "<td class='kolumna'> </td>";
@@ -37,7 +37,13 @@
     </table>
 
     <?php
-    App\core\Navigator::giveMeTheNav($_GET['strona'], $ile_stron_max, 2, 2, '/magazyn-master/magazyn');
+    App\core\Navigator::giveMeTheNav(
+        $_GET['page'],
+        $howManyPagesMax,
+        2,
+        2,
+        '/'.\App\core\App::get('config')['App']['AppName'].'/warehouse'
+    );
     ?>
 </div>
 

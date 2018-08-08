@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", function() {
     }
     for (var a=0;a<forms.length;a++){
         forms[a].addEventListener('input', function () {
-            place[0].innerText='zmieniłeś '+this.firstElementChild.name;
+            place[0].innerText='dokonałeś zmiany';
         });
     }
 

@@ -12,53 +12,53 @@ class StorageController
         Validator::checkIsLogged();
 
         //rekody ile wyświetlić na strone
-        if (isset($_POST['howMuch'])) {
-            $_SESSION['howMuch'] = $_POST['howMuch'];
-        } elseif (!isset($_SESSION['howMuch'])) {
-            $_SESSION['howMuch'] = 5;
+        if (isset($_POST['recordsPerPage'])) {
+            $_SESSION['recordsPerPage'] = $_POST['recordsPerPage'];
+        } elseif (!isset($_SESSION['recordsPerPage'])) {
+            $_SESSION['recordsPerPage'] = 5;
         }
 
-        if (!isset($_GET['strona'])) {
-            $_GET['strona'] = 1;
+        if (!isset($_GET['page'])) {
+            $_GET['page'] = 1;
         }
 
-        $ile_rekord_pominac = ($_GET['strona'] - 1) * $_SESSION['howMuch'];
-        $ile_przedmiotow = App::get('database')->countProduct('magazyn');
+        $howManyRecordsSkip = ($_GET['page'] - 1) * $_SESSION['recordsPerPage'];
+        $howManyProductsInDatabase = App::get('database')->countProduct('magazyn');
 
-        $products = App::get('database')->selectProducts("magazyn", $ile_rekord_pominac, $_SESSION['howMuch']);
+        $products = App::get('database')->selectProducts("magazyn", $howManyRecordsSkip, $_SESSION['recordsPerPage']);
 
-        $ile_stron_max = ceil($ile_przedmiotow / $_SESSION['howMuch']);
+        $howManyPagesMax = ceil($howManyProductsInDatabase / $_SESSION['recordsPerPage']);
 
 
         echo "<script src='js/magazyn.js'></script>";
-        return view('warehouse', compact('products', 'ile_stron_max'));
+        return view('warehouse', compact('products', 'howManyPagesMax'));
     }
 
     public function add()
     {
         Validator::checkIsAdmin();
-        $stanMagazynu = 0;
+        $storageStatus = 0;
 
 
-        return view('warehouse-admin', compact('stanMagazynu'));
+        return view('warehouse-admin', compact('storageStatus'));
     }
 
     public function save()
     {
         Validator::checkIsAdmin();
-        $stanMagazynu = 0;
+        $storageStatus = 0;
 
-        $przedmiot = [
-            'name' => Validator::checkProductName($_POST['nazwa']),
-            'cena' => Validator::checkProductPrice($_POST['cena']),
-            'ilosc' => Validator::checkProductNumber($_POST['ilosc']),
-            'dzial' => $_POST['dzial']
+        $product = [
+            'name' => Validator::checkProductName($_POST['productName']),
+            'price' => Validator::checkProductPrice($_POST['price']),
+            'number' => Validator::checkProductNumber($_POST['number']),
+            'section' => $_POST['section']
         ];
-        if ($przedmiot['name'] && $przedmiot['cena'] && $przedmiot['ilosc'] && $przedmiot['dzial']) {
-            App::get('database')->addProduct('magazyn', $przedmiot);
-            $stanMagazynu = 1;
+        if ($product['name'] && $product['price'] && $product['number'] && $product['section']) {
+            App::get('database')->addProduct('magazyn', $product);
+            $storageStatus = 1;
         }
 
-        return view('warehouse-admin', compact('stanMagazynu'));
+        return view('warehouse-admin', compact('storageStatus'));
     }
 }

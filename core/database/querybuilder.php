@@ -31,7 +31,7 @@ class QueryBuilder
             $_SESSION["admin"] = $user[0]->administracja;
             return true;
         } else {
-            $_SESSION['err_log'] = "Podano złe dane";
+            $_SESSION['errorLog'] = "Podano złe dane";
             return false;
         }
     }
@@ -39,22 +39,22 @@ class QueryBuilder
 
     public function countProduct($table)
     {
-        $statement1 = $this->pdo->query("SELECT COUNT(id_przedmiotu)as ilosc FROM $table WHERE id_przedmiotu>0")
-            ->fetch()['ilosc'];
+        $statement1 = $this->pdo->query("SELECT COUNT(id)as number FROM $table WHERE id>0")
+            ->fetch()['number'];
 
         return $statement1;
     }
 
     public function selectProducts($table, $skip, $stop)
     {
-        $statement = $this->pdo->prepare("SELECT * FROM $table WHERE id_przedmiotu>0  LIMIT $skip,$stop");
+        $statement = $this->pdo->prepare("SELECT * FROM $table WHERE `id`>0  LIMIT $skip,$stop");
         $statement->execute();
         return $statement->fetchAll(PDO::FETCH_CLASS, Product::class);
     }
 
     public function returnProductFromId($table, $id)
     {
-        $statement = $this->pdo->prepare("SELECT * FROM $table WHERE `id_przedmiotu`=$id");
+        $statement = $this->pdo->prepare("SELECT * FROM $table WHERE `id`=$id");
         $statement->execute();
         $product = $statement->fetchAll(PDO::FETCH_CLASS, Product::class);
         return $product[0];
@@ -64,23 +64,18 @@ class QueryBuilder
     public function addProduct($table, $data)
     {
         $statement = $this->pdo->prepare("INSERT INTO 
-$table(`id_przedmiotu`, `nazwa_przedmiotu`, `cena`, `ilosc`, `dzial`) VALUES ('',:nazwa,:cena,:ilosc,:dzial)");
-        $statement->bindValue(":nazwa", $data['name'], PDO::PARAM_STR);
-        $statement->bindValue(":cena", $data['cena'], PDO::PARAM_INT);
-        $statement->bindValue(":ilosc", $data['ilosc'], PDO::PARAM_INT);
-        $statement->bindValue(":dzial", $data['dzial'], PDO::PARAM_INT);
+$table(`id`, `productName`, `price`, `number`, `section`) VALUES ('',:name,:price,:number,:section)");
+        $statement->bindValue(":name", $data['name'], PDO::PARAM_STR);
+        $statement->bindValue(":price", $data['price'], PDO::PARAM_INT);
+        $statement->bindValue(":number", $data['number'], PDO::PARAM_INT);
+        $statement->bindValue(":section", $data['section'], PDO::PARAM_INT);
         $statement->execute();
     }
 
-    /**
-     * @param $id
-     * @param $dataname
-     * @param $datavalue
-     */
-    public function editProduct($id, $dataname, $datavalue)
+    public function editProduct($id, $dataName, $dataValue)
     {
-        $statement = $this->pdo->prepare("UPDATE `magazyn` SET $dataname=:value WHERE `id_przedmiotu` =$id");
-        $statement->bindValue(":value", $datavalue, PDO::PARAM_INT);
+        $statement = $this->pdo->prepare("UPDATE `magazyn` SET $dataName=:value WHERE `id` =$id");
+        $statement->bindValue(":value", $dataValue, PDO::PARAM_INT);
         $statement->execute();
     }
 
@@ -90,7 +85,7 @@ $table(`id_przedmiotu`, `nazwa_przedmiotu`, `cena`, `ilosc`, `dzial`) VALUES (''
      */
     public function deleteProduct($id)
     {
-        $statement = $this->pdo->prepare("DELETE FROM `magazyn` WHERE `id_przedmiotu` = $id");
+        $statement = $this->pdo->prepare("DELETE FROM `magazyn` WHERE `id` = $id");
         $statement->execute();
     }
 
@@ -121,8 +116,8 @@ VALUES ('',:login,:password,:email, '0')");
     public function checkInDataBase($table, $IndexArray, $ValueArray)
     {
         for ($i = 0; $i < count($IndexArray); $i++) {
-            $sql = "SELECT COUNT('id') as ilosc FROM $table WHERE `$IndexArray[$i]` = '" . $ValueArray[$i] . "'";
-            $statement = $this->pdo->query($sql)->fetch()['ilosc'];
+            $sql = "SELECT COUNT('id') as number FROM $table WHERE `$IndexArray[$i]` = '" . $ValueArray[$i] . "'";
+            $statement = $this->pdo->query($sql)->fetch()['number'];
             if ($statement == 0) {
                 return true;
             } else {

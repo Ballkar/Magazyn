@@ -4,31 +4,32 @@
         <label>Wpisz nazwe Przedmiotu: </label>
         <br/>
         <?php
-        App\core\Message::ShowAndDelete('errName', 'error');
+        App\core\Message::ShowAndDelete('errorProductName', 'error');
         ?>
-        <input type="text" placeholder="" name="nazwa"><br/>
+        <input type="text" placeholder="" name="productName"><br/>
 
         <label>Wpisz cene: </label>
         <br/>
         <?php
-        App\core\Message::ShowAndDelete('errPrice', 'error');
+        App\core\Message::ShowAndDelete('errorPrice', 'error');
         ?>
-        <input type="text" placeholder="" name="cena"><br/>
+        <input type="text" placeholder="" name="price"><br/>
 
         <label>Wpisz ilość: </label>
         <br/>
         <?php
-        App\core\Message::ShowAndDelete('errNumber', 'error');
+        App\core\Message::ShowAndDelete('errorNumber', 'error');
         ?>
-        <input type="number" placeholder="" name="ilosc"><br/>
+        <input type="number" placeholder="" name="number"><br/>
 
         <label>Wybierz dział: </label>
         <br/>
         <?php
 
-        App\core\Message::ShowAndDelete('errDepartment', 'error');
+        App\core\Message::ShowAndDelete('errorSection', 'error');
         ?>
-        <select name="dzial">
+        <label for="section"></label>
+        <select name="section" id="section">
             <option value="1">Budowlany</option>
             <option value="2">Elektronika</option>
             <option value="3">Mechanika</option>

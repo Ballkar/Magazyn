@@ -10,7 +10,7 @@ require "basic/nav.php";
         <h1>Produkt</h1>
     </div>
     <div id="TopContent">
-        <h1><?= $product->nazwa_przedmiotu ?></h1>
+        <h1><?= $product->productName ?></h1>
     </div>
 
     <?php
