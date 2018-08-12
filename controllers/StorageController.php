@@ -2,14 +2,15 @@
 
 namespace App\controllers;
 
-use App\core\Validator;
+use App\core\SessionValidator;
+use App\core\ProductValidator;
 use App\core\App;
 
 class StorageController
 {
     public function show()
     {
-        Validator::checkIsLogged();
+        SessionValidator::checkIsLogged();
 
         //rekody ile wyświetlić na strone
         if (isset($_POST['recordsPerPage'])) {
@@ -23,9 +24,13 @@ class StorageController
         }
 
         $howManyRecordsSkip = ($_GET['page'] - 1) * $_SESSION['recordsPerPage'];
-        $howManyProductsInDatabase = App::get('database')->countProduct('magazyn');
+        $howManyProductsInDatabase = App::get('database')->countProduct();
 
-        $products = App::get('database')->selectProducts("magazyn", $howManyRecordsSkip, $_SESSION['recordsPerPage']);
+        $products = App::get('database')->selectProducts(
+            App::get('config')['database']['storageTable'],
+            $howManyRecordsSkip,
+            $_SESSION['recordsPerPage']
+        );
 
         $howManyPagesMax = ceil($howManyProductsInDatabase / $_SESSION['recordsPerPage']);
 
@@ -36,7 +41,7 @@ class StorageController
 
     public function add()
     {
-        Validator::checkIsAdmin();
+        SessionValidator::checkIsAdmin();
         $storageStatus = 0;
 
 
@@ -45,17 +50,17 @@ class StorageController
 
     public function save()
     {
-        Validator::checkIsAdmin();
+        SessionValidator::checkIsAdmin();
         $storageStatus = 0;
 
         $product = [
-            'name' => Validator::checkProductName($_POST['productName']),
-            'price' => Validator::checkProductPrice($_POST['price']),
-            'number' => Validator::checkProductNumber($_POST['number']),
+            'name' => ProductValidator::checkProductName($_POST['productName']),
+            'price' => ProductValidator::checkProductPrice($_POST['price']),
+            'number' => ProductValidator::checkProductNumber($_POST['number']),
             'section' => $_POST['section']
         ];
         if ($product['name'] && $product['price'] && $product['number'] && $product['section']) {
-            App::get('database')->addProduct('magazyn', $product);
+            App::get('database')->addProduct($product);
             $storageStatus = 1;
         }
 

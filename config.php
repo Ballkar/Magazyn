@@ -4,9 +4,9 @@
 return [
     "database" => [
         "dsn" => "mysql:host=127.0.0.1",
-        "databaseName" => "magazyn",
+        "databaseName" => "crud",
         "userTable"=>'user',
-        "storageTable"=>'magazyn',
+        "storageTable"=>'storage',
         "charset" => "utf8",
         "user" => "root",
         "password" => "",

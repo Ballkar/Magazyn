@@ -15,57 +15,53 @@ require "basic/nav.php";
         ?>
     </div>
     <div id="register">
-        <form action="/magazyn-master/rejestracja" method="POST">
-
-            <?php
-            App\core\Message::ShowAndDelete('reg_success', 'info');
-            ?>
+        <form action="/magazyn-master/register" method="POST">
 
             <label FOR="login">Podaj login</label>
             <?php
-            App\core\Message::ShowAndDelete('err_reg_login', 'error_register');
+            App\core\Message::ShowAndDelete('errorLogin', 'error_register');
             ?>
             <input type="text" placeholder="Login" name="login" id="login" value="<?php
-            App\core\Message::ShowValueAndDelete('reg_login');
+            App\core\Message::ShowValueAndDelete('registrationLogin');
             ?>">
 
 
-            <label FOR="haslo">Podaj hasło
+            <label FOR="password">Podaj hasło
+                <span class="info_register">minimum 6 znaków</span>
+
                 <?php
-                App\core\Message::ShowMassage('minimum 6 znaków', 'info_register');
+                App\core\Message::ShowAndDelete('errorPassword', 'error_register');
                 ?>
             </label>
-            <?php
-            App\core\Message::ShowAndDelete('err_reg_haslo', 'error_register');
-            ?>
-            <input type="password" placeholder="Hasło" name="haslo" id="haslo">
+
+            <input type="password" placeholder="Hasło" name="password" id="password">
 
 
-            <label FOR="haslo2">Powtórz hasło</label>
+            <label FOR="passwordConfirmation">Powtórz hasło</label>
             <?php
-            App\core\Message::ShowAndDelete('err_reg_haslo2', 'error_register');
+            App\core\Message::ShowAndDelete('errorPasswordConfirmation', 'error_register');
             ?>
-            <input type="password" placeholder="Powtórz Hasło" name="haslo2" id="haslo2">
+            <input type="password" placeholder="Powtórz Hasło" name="passwordConfirmation" id="passwordConfirmation">
 
 
             <label FOR="email">Podaj adres Email</label>
             <?php
-            App\core\Message::ShowAndDelete('err_reg_email', 'error_register');
+            App\core\Message::ShowAndDelete('errorEmail', 'error_register');
             ?>
             <input type="text" placeholder="Email" name="email" id="email" value="<?php
-            App\core\Message::ShowValueAndDelete('reg_email');
+            App\core\Message::ShowValueAndDelete('registrationEmail');
             ?>">
 
 
-            <label FOR="regulamin">Oświadczam że przeczytałem <a href="https://pl.wikipedia.org/wiki/Regulamin">
+            <label FOR="section">Oświadczam że przeczytałem <a href="https://pl.wikipedia.org/wiki/Regulamin">
                     regulamin</a> i się z nim zgadzam.</label>
             <?php
-            App\core\Message::ShowAndDelete('err_reg_regulamin', "error_register");
+            App\core\Message::ShowAndDelete('errorSection', "error_register");
             ?>
-            <input type="checkbox" name="regulamin" id="regulamin" <?php
-            if (isset($_SESSION['reg_regulamin'])) {
+            <input type="checkbox" name="section" id="section" <?php
+            if (isset($_SESSION['registrationSection'])) {
                 echo "checked";
-                unset($_SESSION['reg_regulamin']);
+                unset($_SESSION['registrationSection']);
             }
             ?>
             >
