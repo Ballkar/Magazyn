@@ -36,7 +36,6 @@ class QueryBuilder
             $_SESSION["admin"] = $user[0]->administracja;
             return true;
         } else {
-            $_SESSION['errorLog'] = "Podano złe dane";
             return false;
         }
     }
@@ -70,7 +69,7 @@ class QueryBuilder
     {
         $statement = $this->pdo->prepare("INSERT INTO 
 $this->productTableName (`id`, `productName`, `price`, `number`, `section`) VALUES ('',:name,:price,:number,:section)");
-        $statement->bindValue(":name", $data['name'], PDO::PARAM_STR);
+        $statement->bindValue(":name", $data['productName'], PDO::PARAM_STR);
         $statement->bindValue(":price", $data['price'], PDO::PARAM_INT);
         $statement->bindValue(":number", $data['number'], PDO::PARAM_INT);
         $statement->bindValue(":section", $data['section'], PDO::PARAM_INT);
@@ -132,5 +131,14 @@ WHERE `$IndexArray[$i]` = '" . $ValueArray[$i] . "'";
             }
         }
         return false;
+    }
+
+    public function checkIfAccountExist($login, $password)
+    {
+        $statement1 = $this->pdo->query("SELECT COUNT('id')as number FROM $this->userTableName 
+WHERE `login`=`$login` AND `password`=`$password`")
+            ->fetch()['number'];
+
+        die($statement1);
     }
 }

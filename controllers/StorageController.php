@@ -53,14 +53,31 @@ class StorageController
         SessionValidator::checkIsAdmin();
         $storageStatus = 0;
 
-        $product = [
-            'name' => ProductValidator::checkProductName($_POST['productName']),
-            'price' => ProductValidator::checkProductPrice($_POST['price']),
-            'number' => ProductValidator::checkProductNumber($_POST['number']),
-            'section' => $_POST['section']
-        ];
-        if ($product['name'] && $product['price'] && $product['number'] && $product['section']) {
-            App::get('database')->addProduct($product);
+        $validator = new ProductValidator();
+
+        if ($validator->checkProductName($_POST['productName'])) {
+            $_SESSION['valueProductName'] = $_POST['productName'];
+        } else {
+            $_SESSION['errorProductName'] = "Nazwa przedmiotu powinna mieć od 5 do 29 znaków";
+        }
+
+        if ($validator->checkProductPrice($_POST['price'])) {
+            $_SESSION['valueProductPrice'] = $_POST['price'];
+            $_POST['price'] = round($_POST['price'], 2);
+        } else {
+            $_SESSION['errorPrice'] = "Podana cena musi być liczbą większą od 0";
+        }
+        if ($validator->checkProductNumber($_POST['number'])) {
+            $_SESSION['valueProductNumber'] = $_POST['number'];
+        } else {
+            $_SESSION['errorNumber'] = "Ilość musi być liczbą całkowitą większą od 0";
+        }
+
+        if ($validator->getValidationStatus() && $_POST['section']) {
+            unset($_SESSION['valueProductName']);
+            unset($_SESSION['valueProductPrice']);
+            unset($_SESSION['valueProductNumber']);
+            App::get('database')->addProduct($_POST);
             $storageStatus = 1;
         }
 

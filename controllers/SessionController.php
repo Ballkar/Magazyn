@@ -3,7 +3,6 @@
 namespace App\controllers;
 
 use App\core\AccountValidator;
-use App\core\ProductValidator;
 use App\core\SessionValidator;
 use App\core\App;
 
@@ -16,7 +15,11 @@ class SessionController
 
     public function login()
     {
-        App::get('database')->logUser($_POST["login"], $_POST["password"]);
+        if (App::get('database')->checkIfAccountExist($_POST['login'], $_POST['password'])) {
+            App::get('database')->logUser($_POST["login"], $_POST["password"]);
+        } else {
+            $_SESSION['errorLog'] = "Podano złe dane";
+        }
 
         return view('index');
     }
@@ -45,10 +48,10 @@ class SessionController
     {
         SessionValidator::checkIsNotLogged();
 
-        $validator= new AccountValidator();
+        $validator = new AccountValidator();
+
         $login = $_POST['login'];
-        $loginValidation = $validator->checkLogin($login);
-        if ($loginValidation) {
+        if ($validator->checkLogin($login)) {
             $_SESSION['registrationLogin'] = $login;
             $loginDatabaseCheck = App::get('database')->CheckInDatabase(['login'], [$login]);
             if ($loginDatabaseCheck == false) {
@@ -56,12 +59,11 @@ class SessionController
                 $validator->changeValidationStatus(false);
             }
         } else {
-            $_SESSION['errorLogin'] = "Login powinien zawierać od 4 do 20 znaków alfanumerycznych zaczynajac od litery";
+            $_SESSION['errorLogin'] = "Login powinien zawierać od 5 do 20 znaków alfanumerycznych zaczynajac od litery";
         }
 
         $password = $_POST['password'];
-        $passwordValidation = $validator->checkPassword($password);
-        if ($passwordValidation) {
+        if ($validator->checkPassword($password)) {
             $passwordConfirmation = $_POST['passwordConfirmation'];
             if ($password !== $passwordConfirmation) {
                 $_SESSION['errorPasswordConfirmation'] = "Podane hasla nie pasują";
@@ -73,14 +75,12 @@ class SessionController
 
 
         $email = $_POST['email'];
-        $emailValidation = $validator->checkEmail($email);
-        if ($emailValidation) {
+        if ($validator->checkEmail($email)) {
             $_SESSION['registrationEmail'] = $email;
             $emailDatabaseCheck = App::get('database')->CheckInDatabase(['email'], [$email]);
             if ($emailDatabaseCheck == false) {
                 $_SESSION['errorEmail'] = "Podany email jest już w bazie";
                 $validator->changeValidationStatus(false);
-
             }
         } else {
             $_SESSION['errorEmail'] = "Niepoprawny adres email";
@@ -88,7 +88,6 @@ class SessionController
 
 
         if (!isset($_POST['section'])) {
-            $section = false;
             $_SESSION['errorSection'] = "Należy zapoznac się z regulaminem";
             $validator->changeValidationStatus(false);
         } else {
@@ -96,12 +95,12 @@ class SessionController
         }
 
 
-        //Jeżeli jest poprawnie zacznij sprawdzanie czy nie ma go w bazie danych.
         if ($validator->getValidationStatus()) {
             //wyczyść zmienne które służą do zapamiętywania danych z prób rejestracji
             unset($_SESSION['registrationLogin']);
             unset($_SESSION['registrationEmail']);
             unset($_SESSION['registrationSection']);
+
             App::get('database')->addNewAccount($login, password_hash($password, PASSWORD_DEFAULT), $email);
 
             return redirect(App::get('config')['App']['AppName']);

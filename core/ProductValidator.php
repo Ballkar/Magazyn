@@ -5,37 +5,36 @@ namespace App\core;
 
 class ProductValidator extends SessionValidator
 {
-    public static function checkProductName($name)
+    public function checkProductName($name)
     {
-        if (strlen($name) > 30 || strlen($name) <= 0) {
-            $_SESSION['errorProductName'] = "Nazwa przedmiotu powinna mieć od 1 do 29 znaków";
-            return false;
+        $regularExp = "/^[A-Z|a-z]{1}[A-Z|a-z|0-9]{4,29}$/";
+        if (Preg_match($regularExp, $name)) {
+            return true;
         } else {
-            return $name;
-        }
-    }
-
-    public static function checkProductPrice($price)
-    {
-        if ($price <= 0) {
-            $_SESSION['errorPrice'] = "Podana cena musi być liczbą większą od 0";
-            return false;
-        } elseif (is_numeric($price)) {//poprawna liczba
-            $price = round($price, 2);
-            return $price;
-        } else {
-            $_SESSION['errorPrice'] = "Podana cena musi być liczbą większą od 0";
+            $this->validationStatus = false;
             return false;
         }
     }
 
-    public static function checkProductNumber($number)
+    public function checkProductPrice($price)
     {
-        if ($number <= 0) {
-            $_SESSION['errorNumber'] = "Ilość musi być liczbą całkowitą większą od 0";
-            return false;
+        $regularExp = "/^[0-9]+(\.[0-9]{0,99})?$/";
+        if (Preg_match($regularExp, $price)) {
+            return true;
         } else {
-            return $number;
+            $this->validationStatus = false;
+            return false;
+        }
+    }
+
+    public function checkProductNumber($number)
+    {
+        $regularExp = "/^[0-9]+$/";
+        if (Preg_match($regularExp, $number)) {
+            return true;
+        } else {
+            $this->validationStatus = false;
+            return false;
         }
     }
 }

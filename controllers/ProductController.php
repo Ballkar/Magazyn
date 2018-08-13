@@ -21,12 +21,17 @@ class ProductController
     public function update()
     {
         SessionValidator::checkIsLogged();
+        $validator = new ProductValidator();
 
-        if (isset($_POST['price']) && $price = ProductValidator::checkProductPrice($_POST['price'])) {
+        if (isset($_POST['price']) && $price = $validator->checkProductPrice($_POST['price'])) {
             App::get('database')->editProduct($_GET['id'], 'price', $price);
-        } elseif (isset($_POST['number']) && $number = ProductValidator::checkProductNumber($_POST['number'])) {
+        }
+
+        if (isset($_POST['number']) && $number = $validator->checkProductNumber($_POST['number'])) {
             App::get('database')->editProduct($_GET['id'], 'number', $_POST['number']);
-        } elseif (isset($_POST['section'])) {
+        }
+
+        if (isset($_POST['section'])) {
             App::get('database')->editProduct($_GET['id'], 'section', $_POST['section']);
         }
 

@@ -4,23 +4,32 @@
         <label>Wpisz nazwe Przedmiotu: </label>
         <br/>
         <?php
-        App\core\Message::ShowAndDelete('errorProductName', 'error');
+        App\core\Message::showAndDelete('errorProductName', 'error');
         ?>
-        <input type="text" placeholder="" name="productName"><br/>
+        <input type="text" placeholder="" name="productName" value="<?php
+        App\core\Message::showValueAndDelete('valueProductName', 'error');
+
+        ?>"><br/>
 
         <label>Wpisz cene: </label>
         <br/>
         <?php
-        App\core\Message::ShowAndDelete('errorPrice', 'error');
+        App\core\Message::showAndDelete('errorPrice', 'error');
         ?>
-        <input type="text" placeholder="" name="price"><br/>
+        <input type="text" placeholder="" name="price" value="<?php
+        App\core\Message::showValueAndDelete('valueProductPrice', 'error');
+
+        ?>"><br/>
 
         <label>Wpisz ilość: </label>
         <br/>
         <?php
-        App\core\Message::ShowAndDelete('errorNumber', 'error');
+        App\core\Message::showAndDelete('errorNumber', 'error');
         ?>
-        <input type="number" placeholder="" name="number"><br/>
+        <input type="number" placeholder="" name="number" value="<?php
+        App\core\Message::showValueAndDelete('valueProductNumber', 'error');
+
+        ?>"><br/>
 
         <label>Wybierz dział: </label>
         <br/>
