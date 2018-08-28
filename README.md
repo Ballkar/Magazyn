@@ -24,7 +24,7 @@ Project of simple warehouse in simple PHP.
  
  - Start local Apache and MySQL.
  
- - Create database 'crud' and import from Magazyn-master/magazyn.sql
+ - Create database 'crud' and import from Magazyn-master/crud.sql
  
  - You can now access the server at http://localhost/magazyn-master/
 
